@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<style></style>
+	<body>
+		 <!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+
+    <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+           	<h4>订单详情</h4>
+           	
+            <div class="am-form-group am-margin-left am-fl">
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+	
+    <div class="am-g">
+      <div class="am-u-sm-12">
+          <table class="am-table am-table-striped am-table-hover " style='font-size:13' id='tab' delurl="{:U('Admin/Blogroll/del')}">
+            <thead>
+              <tr>
+              <th>订单ID</th>
+              <th width="20%">商品名</th>
+              <th>数量</th>
+              <th>商品单价</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          
+          <foreach name='lists' key="key" item="val">
+            <tr>
+              <td>{$val.ors_id}</td>
+              <td>{$val.gos_name}</td>
+              <td>{$val.sht_num}</td>
+              <td>{$val.gos_price}</td>
+              
+              </foreach>
+              <foreach name='list' key='key' item="value">
+              <td id='up'>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+					<if condition="$value['orm_status'] eq 新订单">
+                 
+                   	<a href="{:U('Admin/OrderForm/Modify',array('orm_id'=>$val['orm_id'],'orm_status'=>$val['orm_status']))}" title="{$val.orm_id}" class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick=""><span></span>发货</a>
+					</if>
+				
+                  </div>
+                </div>
+              </td>
+              </foreach>
+              <td></td>
+              <td></td>
+            </tr>
+          
+          </tbody>
+          
+          
+        </table>
+          <div class="am-cf">
+ 	 
+  
+</div>
+	
+          <hr />
+          <p>{$value.orm_status}</p>
+      </div>
+	
+    </div>
+  </div>
+
+</div>
+<script src='__PUBLIC__/js/blogroll.js'></script>
+<include file="Public:Table_header/footer"/>
+
+	</body>
+</html>

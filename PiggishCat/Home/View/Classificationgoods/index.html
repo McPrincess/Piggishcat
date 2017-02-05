@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.11.1.min_044d0927.js" />
+    <load href="__PUBLIC__/Home/js/jquery.bxslider_e88acd1b.js" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/lrscroll_1.js" />
+    <load href="__PUBLIC__/Home/js/n_nav.js" />
+    <load href="__PUBLIC__/Home/js/milk_ban.js" />
+    <load href="__PUBLIC__/Home/js/paper_ban.js" />
+    <load href="__PUBLIC__/Home/js/baby_ban.js" />
+    <load href="__PUBLIC__/js/bootstrap.min.js" />
+    <load href="__PUBLIC__/css/bootstrap.min.css" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+</head>
+<style>
+    body{
+        font-size:12px;
+    }
+</style>
+<body>  
+<!--Begin Header Begin-->
+<include file="./Public/Home/PC_top.html"/>
+<!--End Header End--> 
+
+<!--Begin Menu Begin-->
+<include file="./Public/Home/PC_nav.html"/>
+<!--End Menu End--> 
+
+    <!--End 热卖爆款商品 End-->
+    <!--Begin 奶粉辅食 Begin-->
+    <div class="i_t mar_10">
+    <!-- 面包屑 -->
+        <span class="fl t_color" style='font-size:14px;'><a href="{:U('Home/Category/Category',array('goy_id'=>$CategoryName[0][1]))}"> {$CategoryName[0][0]}  >> </a></span>
+        <span class="fl t_color" style='font-size:14px;'>{$CategoryName[0][2]}  >> </span>
+    	<span class="fl t_color" style='font-size:14px;'><a href="{:U('Home/Classificationgoods/index',array('goy_id'=>$CategoryName[0][5]))}"> {$CategoryName[0][4]} >>  </a></span>
+    <!-- END -->
+
+        <span class="i_mores fr"><a href="#">营养品</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">孕妈背带裤</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">儿童玩具</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">婴儿床</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">喂奶器</a></span>               
+    </div>
+    <div class="content">
+    	<div class="milk_ban">
+            <div id="imgPlaym">
+                <ul class="imgs" id="actorm">
+                    <li><a href="#"><img src="__PUBLIC__/Home/images/milk_ban.jpg" width="228" height="418" /></a></li>
+                    <li><a href="#"><img src="__PUBLIC__/Home/images/milk_ban.jpg" width="228" height="418" /></a></li>
+                    <li><a href="#"><img src="__PUBLIC__/Home/images/milk_ban.jpg" width="228" height="418" /></a></li>
+                </ul>
+                <div class="prevm">上一张</div>
+                <div class="nextm">下一张</div>
+            </div>        
+        </div>
+                    <a href="{:U('Home/Classificationgoods/index',array('param'=>Saledown,'goy_id'=>$param))}" class="btn btn-default btn-sm">
+                        <span class="i_up">销量从低到高显示</span>
+                    </a>
+                    <a href="{:U('Home/Classificationgoods/index',array('param'=>SaleHot,'goy_id'=>$param))}" class="btn btn-default btn-sm">
+                        <span class="i_down" >销量从高到低显示</span>
+                    </a>                   
+                    <a href="{:U('Home/Classificationgoods/index',array('param'=>Pricedown,'goy_id'=>$param))}" class="btn btn-default btn-sm">
+                        <span class="i_up" >价格从低到高显示</span>
+                    </a>
+                    <a href="{:U('Home/Classificationgoods/index',array('param'=>PriceHeight,'goy_id'=>$param))}" class="btn btn-default btn-sm">
+                        <span class="i_down" >价格从高到低显示</span>     
+                    </a>
+        <div class="milk_right">
+                              
+                    
+        	<ul style='padding-top:5px;'>
+                <foreach name='goodsInfo' item='goods'>
+            	<li>
+                    <div class="img"><a href="{:U('Home/Goodsdetails/index',array('gos_id'=>$goods[gos_id]))}"><img src="__PUBLIC__/image/goods/home_{$goods['goe_path']}" height="155" /></a></div>
+                	<div class="name"><a href="#">{$goods['gos_name']}</a></div>
+                    <div class="price">
+                    <font>￥<span>{$goods['gos_price']}</span></font> 
+                    <span style='font-size:10px;text-align:left'>销量 : {$goods['gos_sales']}</span>
+                    </div>
+                </li>
+               </foreach>
+              
+            </ul>
+            
+        </div>
+
+        <!-- 分页按钮 -->
+        <div id='show' style='margin-left:50%'>
+                        {$show}
+                
+     </div>
+    </div>
+    <!--End 奶粉辅食 End-->
+    
+    
+
+<script type="text/javascript">
+     // 包裹
+    $('#show div').wrapInner('<ul class="pagination"></ul>').children().children().wrap('<li></li>');
+    // 显示当前页码
+    $('#show .current').parent().addClass('active');
+</script>
+    <!--Begin Footer Begin -->
+<script type="text/javascript">
+$(function() {
+    $('.Category').each(function(i){
+          this.title = i;
+ });
+})
+ function test(obj){ 
+    $('.zj').css('top',$(obj).attr('title') * -40) + 'px';
+ }
+</script>
+
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   

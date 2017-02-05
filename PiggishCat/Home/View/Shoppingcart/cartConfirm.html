@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/n_nav.js" />    
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/js/num.js" />    
+    <load href="__PUBLIC__/Home/js/shade.js" />
+    <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+    <script>
+    	var jq = jQuery.noConflict();
+    </script>
+  
+<title>馋猫</title>
+</head>
+<body>  
+<!--Begin Header Begin-->
+<include file="./Public/Home/PC_top.html"/>
+<!--End Header End--> 
+<!--Begin Menu Begin-->
+<include file="./Public/Home/PC_nav.html"/>
+<!--End Menu End--> 
+<div class="i_bg">  
+    <div class="content mar_20">
+    	<img src="__PUBLIC__/Home/images/img2.jpg" />        
+    </div>
+    
+    <!--Begin 第二步：确认订单信息 Begin -->
+    <div class="content mar_20">
+    <form action="{:U('Home/shoppingcart/cartSubmit')}" method='post' id='form'>
+    	<div class="two_bg">
+        	<div class="two_t">
+            	<span class="fr"><a href="{:U('Home/shoppingcart/shopcart')}">返回购物车</a></span>商品列表
+            </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td class="car_th" width="120">商品图片</td>
+                <td class="car_th" width="150">商品名称</td>
+                <td class="car_th" width="140">商品单价</td>
+                <td class="car_th" width="150">购买数量</td>
+                <td class="car_th" width="130">小计(元)</td>
+                
+              </tr>
+              <input type="hidden" name="orm_total[]" value="{$money}"/>
+              <foreach name="res" key="key" item="val">
+                  <tr class="car_tr">
+                      <input type="hidden" name="sht_id[]" value="{$val['sht_id']}"/>
+                      <input type="hidden" value="
+                      {$val['gos_id']}" name='gos_id[]'/>
+                      <td>
+                          <img class="c_s_img" src="__PUBLIC__/image/goods/small_{$val['gos_path']}" width="73" height="73" />                      </td>
+                      <td>
+                          {$val['gos_name']}
+                      </td>
+                      <td align="center">￥{$val['gos_price']}</td>
+                      <td align="center">{$val['sht_num']}</td>
+                      <td align="center" style="color:#ff4e00;" id="all-money">{$val['gos_price']*$val['sht_num']}</td>
+                      
+                  </tr>
+              </foreach>
+
+              <tr>
+                <td colspan="5"  align="right" style=" font-size:22px; font-family:'Microsoft YaHei';">
+                    商品总价：￥{$money} 
+                </td>
+              </tr>
+            </table>
+            
+            <div class="two_t">
+            	<span class="fr"><a href="{:U('Home/Address/index')}">地址管理</a></span>收货人信息
+            </div>
+            <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr> 
+                    <td class="car_th" width="100">选择地址</td>
+                    <td class="car_th" width="150">收件人</td>
+                    <td class="car_th" width="200">手机号码</td>
+                    <td class="car_th" width="450">详细信息</td>
+                    <td class="car_th" width="100">操作</td>
+                </tr>
+
+                <foreach name="addList" key="key" item="val">
+                       			 
+
+                    <tr>
+                        <td>
+                            <input type="radio" name="ads_id[]" value="{$val['ads_id']}" {$check = $val['ads_status'] == 1 ? 'checked' : '' } />
+                        </td>
+                        
+                        <td>{$val['clt_name']}</td>
+                        <td>{$val['clt_phone']}</td>
+                        <td style="color:#ff4e00;">{$val['clt_address']}</td>
+                        <td>
+                            <!-- 修改 -->
+                        </td>
+                    </tr>
+                </foreach>
+            </table>
+
+            
+
+            
+            <div class="two_t">
+            	其他信息
+            </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+
+              <tr valign="top">
+                <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单备注：</b></td>
+                <td style="padding-left:0;"><textarea name="orm_remark" class="add_txt" style="width:860px; height:50px;"></textarea></td>
+              </tr>
+
+            </table>
+          </form>
+            <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
+
+              <tr height="70">
+                <td align="right">
+                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥{$money}</span></b>
+                </td>
+              </tr>
+              <tr height="70">
+                
+                <td align="right"><input type="submit" style="border:0; margin:0,none;margin-top:-40px; width:180px ; height:45px ; background-image:url('__PUBLIC__/Home/images/btn_sure.gif');"value=''/></td>
+              </tr>
+            </table>
+
+            
+        	
+        </div>
+    </div>
+	<!--End 第二步：确认订单信息 End-->
+
+  <!-- js -->
+<script>
+  
+
+</script>    
+    
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->    

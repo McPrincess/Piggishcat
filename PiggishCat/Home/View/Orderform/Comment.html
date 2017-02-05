@@ -1,0 +1,118 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+ 	<style>
+        #star li{
+            width: 27px;
+            height: 28px;
+            /*border:1px solid red;*/
+            background: url(__PUBLIC__/image/goods/xing.gif);
+            background-repeat: no-repeat;
+            /*background-position: 0 -28px;*/
+            list-style:none;
+            float:left;
+        }
+        #star2 li{
+            width: 27px;
+            height: 28px;
+            /*border:1px solid red;*/
+            background: url(__PUBLIC__/image/goods/xing.gif);
+            background-repeat: no-repeat;
+            /*background-position: 0 -28px;*/
+            list-style:none;
+            float:left;
+        }
+        #star3 li{
+            width: 27px;
+            height: 28px;
+            /*border:1px solid red;*/
+            background: url(__PUBLIC__/image/goods/xing.gif);
+            background-repeat: no-repeat;
+            /*background-position: 0 -28px;*/
+            list-style:none;
+            float:left;
+        }
+    </style>
+    
+<title>尤洪</title>
+</head>
+
+<body>  
+   
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+	<form action="{:U('Home/Orderform/doComment')}" method="post">
+	<table border="0" class="order_tab" style="width:990px; text-align:center; margin-bottom:30px;" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="10%">商品名</td>
+			<td width="25%">评价</td>
+			<td width="25%">服务满意度</td>
+			<td width="10%">操作</td>
+		</tr>
+		
+		<tr>
+			<td>{$get.gos_name}</td>
+			<td >
+				<input type="textarea" name="eve_detail" style="resize:none; width:400px; height:50px;">
+			</td>
+			<td>
+				<ul id="star">
+			        <li></li>
+			        <li></li>
+			        <li></li>
+			        <li></li>
+			        <li></li>
+			    </ul>
+			</td>
+			<input type="hidden" id="eve_grade" name="eve_grade">
+			<input type="hidden" name="clt_id" value="{$clt_id}">
+			<input type="hidden" name="orm_id" value="{$get.orm_id}">
+			<input type="hidden" name="gos_id" value="{$get.gos_id}">
+			<td>
+				<input type="submit" value="提交">
+			</td>
+		</tr>
+	</table>
+	</form>
+
+	<script>
+
+    var star = document.getElementById('star');
+    
+    var star_li = star.getElementsByTagName('li');
+    
+    
+    // 为每一个li绑定鼠标经过事件
+    for(var i = 0; i < star_li.length; i++){
+        // 记录下表索引
+        star_li[i].index = i;
+        star_li[i].onmouseover = function(){
+
+            // 记录星星的数值并post提交
+            var eve_grade = document.getElementById('eve_grade');
+            eve_grade.value = this.index + 1;
+
+
+            // 清空所有星星
+            for(var k = 0; k < star_li.length; k++){
+                star_li[k].style.backgroundPosition = '0 0';
+            }
+            // 点亮星星
+            for(var j = 0; j <= this.index; j++){
+                star_li[j].style.backgroundPosition = '0 -28px';
+            }
+        };
+
+    }
+
+
+</script>
+
+
+     <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->  

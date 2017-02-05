@@ -1,0 +1,83 @@
+<!-- 引入头部文件 -->
+<include file="Public:Table_header/header"/>
+
+	<form action="{:U('Admin/News/index')}" method="get">
+
+        <div class="row">
+            <div class="col-xs-6 col-md-4"></div>
+            <div class="col-xs-6 col-md-3">
+                <select name="search" class="form-control">
+                    <option>请选择搜索类别</option>
+                    <option value="nes_id">信息id </option>  
+                    <option value="adn_id">管理员姓名 </option>
+                    <option value="nes_detail">信息内容</option>
+                
+                </select> 
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+
+                <div class="input-group">
+                    <input type="text" name="content" class="form-control" placeholder="搜索内容">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="submit">搜索</button>
+                    </span>
+                </div>   
+            </div>
+        </div>
+    </form>
+
+	<div class="am-g">
+		<div class="am-u-sm-12">
+			<form class="am-form">
+				<table class="am-table am-table-striped am-table-hover ">
+					<thead>
+						<tr>
+							<th>信息id</th>
+							<th>管理员</th>
+							<th>信息内容</th>
+							<th>发布时间</th>							
+							<th>操作</th>
+						</tr>
+					</thead>
+
+					<tbody>
+							<foreach name='res' key='k' item='value'>
+								<tr>
+									<td>{$value.nes_id}</td>
+									<td>{$value.adn_id}</td>
+									<td style="width:400px">{$value.nes_detail}</td>
+									<td>{$value.nes_time}</td>
+									
+								<td>
+								<div class="am-btn-toolbar">
+									<div class="am-btn-group am-btn-group-xs">
+										<a href="{:U('Admin/News/delete/',array('nes_id'=>$value['nes_id']))}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除</a>
+									</div>
+								</div>
+								</td>
+
+								</tr>
+							</foreach>
+					</tbody>
+				</table>
+				<div class="am-cf">
+					共 {$num}条记录
+					<div id="show">
+						{$show}
+					</div>
+				</div>
+
+				<hr />
+				<p>注：.....</p>
+			</form>
+		</div>
+
+	</div>
+	</div>
+
+	</div>
+
+<!-- 引入脚部文件 -->
+ <include file="Public:Table_header/footer"/>
+

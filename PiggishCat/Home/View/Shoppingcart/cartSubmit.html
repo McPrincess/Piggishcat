@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />    
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/n_nav.js" />
+    <load href="__PUBLIC__/Home/js/num.js" />
+    <load href="__PUBLIC__/Home/js/shade.js" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+     <!--script type="text/javascript" src="js/num.js"> -->
+    	<!-- // var jq = jQuery.noConflict(); -->
+    <!-- </script>      -->
+    
+    <script>
+        var jq = jQuery.noConflict();
+    </script>
+<title>馋猫</title>
+</head>
+<body>  
+  
+<!--Begin Header Begin-->
+<include file="./Public/Home/PC_top.html"/>
+<!--End Header End--> 
+    
+<!--Begin Menu Begin-->
+<include file="./Public/Home/PC_nav.html"/>
+<!--End Menu End--> 
+
+<div class="i_bg">  
+    <div class="content mar_20">
+    	<img src="__PUBLIC__/Home/images/img3.jpg" />        
+    </div>
+    
+    <!--Begin 第三步：提交订单 Begin -->
+    <div class="content mar_20">
+    	
+        <!--Begin 银行卡支付 Begin -->
+    	<div class="warning">        	
+            <table border="0" style="width:1000px; text-align:center;" cellspacing="0" cellpadding="0">
+              <tr height="35">
+              
+                <td style="font-size:18px;">
+                	感谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font color="#ff4e00">{$res}</font>
+                </td>
+               
+              </tr>
+              <tr>
+                <td style="font-size:14px; font-family:'宋体'; padding:10px 0 20px 0; border-bottom:1px solid #b6b6b6;">
+                	您的应付款金额为: <font color="#ff4e00">￥{$total['0']}</font>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:20px 0 30px 0; font-family:'宋体';">
+                	可到个人中心->我的订单查看更多信息
+                </td>
+              </tr>
+              <tr>
+                <td>
+                	<a href="{:U('Home/index/index')}">首页</a> &nbsp; &nbsp; <a href="{:U('Home/Clientuser/index')}">个人中心</a>
+                </td>
+              </tr>
+            </table>        	
+        </div>
+        <!--Begin 银行卡支付 Begin -->
+        
+       
+        
+       
+        
+        
+    </div>
+	<!--End 第三步：提交订单 End--> 
+    
+    
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   
+

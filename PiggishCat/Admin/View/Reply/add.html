@@ -1,0 +1,27 @@
+<!-- 引入头部文件 -->
+ <include file="Public:Table_header/header"/>
+
+	<form class="form-horizontal" action="{:U('Admin/Reply/add', array('mee_id'=>$get['mee_id']))}" method="post">
+		<h2>留言回复</h2>
+
+		<div class="form-group">
+			<input type="hidden" name="mee_id" value="{$get['mee_id']}">
+			<input type="hidden" name="clt_user" value="{$get['clt_id']}">
+			<label for="inputPassword3" class="col-sm-2 control-label">回复内容</label>
+			<div class="col-sm-8">
+				<textarea name="rey_detail" class="form-control" rows="12" placeholder="留言回复"></textarea>
+				
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-info">确认回复</button>
+			</div>
+		</div>
+	</form>
+
+
+<!-- 引入脚部文件 -->
+ <include file="Public:Table_header/footer"/>
+

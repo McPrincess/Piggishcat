@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.11.1.min_044d0927.js" />
+    <load href="__PUBLIC__/Home/js/jquery.bxslider_e88acd1b.js" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/js/lrscroll.js" />
+    <load href="__PUBLIC__/Home/js/iban.js" />
+    <load href="__PUBLIC__/Home/js/fban.js" />
+    <load href="__PUBLIC__/Home/js/f_ban.js" />
+    <load href="__PUBLIC__/Home/js/mban.js" />
+    <load href="__PUBLIC__/Home/js/bban.js" />
+    <load href="__PUBLIC__/Home/js/hban.js" />
+    <load href="__PUBLIC__/Home/js/tban.js" />
+    <load href="__PUBLIC__/Home/js/lrscroll_1.js" />
+        <load href="__PUBLIC__/Home/alert/js/sweet-alert.js" />
+    <load href="__PUBLIC__/Home/alert/css/sweet-alert.css" />
+    
+    
+    <style type="text/css">
+          tr{
+            margin-top: 20px;
+          }
+    </style>
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+
+<title>馋猫注册</title>
+</head>
+<body>  
+<!--Begin Header Begin-->
+<div class="soubg">
+	<div class="sou">
+        <span class="fr">
+        	
+            <span class="fl">|&nbsp;关注我们：</span>
+            <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
+            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="__PUBLIC__/Home/images/s_tel.png" align="absmiddle" /></a></span>
+        </span>
+    </div>
+</div>
+<!--End Header End--> 
+<!--Begin Login Begin-->
+<div class="log_bg">	
+    <div class="top">
+        <div class="logo"><a href="{:U('Home/Index/index')}"><img src="__PUBLIC__/Home/images/logo3.jpg" /></a></div>
+    </div>
+	<div class="regist"> 
+    	<div class="log_img"><img src="__PUBLIC__/Home/images/l_img.png" width="611" height="425" /></div>
+		<div class="reg_c">
+        	<form method="post" action="{:U('Home/Regist/index')}">
+            <table border="0" style="width:450px; font-size:14px; margin-top:20px;" cellspacing="0" cellpadding="0">
+              <tr height="50" valign="top">
+              	<td width="95">&nbsp;</td>
+                <td>
+                	<span class="fl" style="font-size:24px;">注册</span>
+                    <span class="fr">已有账号，<a href="{:U('Home/Login/index')}" style="color:#ff4e00;">我要登录</a></span>
+                </td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
+                <td><input type="text" style="font-size:12px;" placeholder="请输入6-20个以字母开头、可带数字、“_”、“.”的用户名" value="" id="clt_user" name="clt_user" class="l_user required" /></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;密码 &nbsp;</td>
+                <td><input type="password" style="font-size:12px;" placeholder="请输入6-20个以字母开头、可带数字、“_”的密码" value="" name="clt_pass" id="clt_pass" class="l_pwd required" /></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
+                <td><input type="password" value="" name="repwd" id="repwd" class="l_pwd required" /></td>
+              </tr>
+              <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;手机 &nbsp;</td>
+                <td><input type="text" value="" placeholder="请输入11位" name="clt_phone" id="clt_phone" class="l_tel required" /></td>
+              </tr>
+              <tr height="50" id="vcyzm">
+                <td align="right"> <font color="#ff4e00">*</font>&nbsp;验证码 &nbsp;</td>
+                <td>
+                  <div  style="margin-top: 0px;">
+                    <input type="text" value="" id="code" name="code" class="l_ipt required" />
+                    <img id="imgyzm" style="margin-left:6px;display:inline-block;border-radius:10px;" onclick="this.src='{:U('Home/Regist/code')}?'+Math.random()" src="{:U('Home/Regist/code')}" />
+                    </div> 
+                </td>
+              </tr>
+             
+              <tr>
+              	<td>&nbsp;</td>
+                <td style="font-size:12px; padding-top:20px;">
+                	<span style="font-family:'宋体';" class="fl">
+                    	<label class="r_rad"><input type="checkbox" id="fx" check='0' /></label><label class="r_txt">我已阅读并接受《用户协议》</label>
+                    </span>
+                </td>
+              </tr>
+              <tr height="60">
+              	<td>&nbsp;</td>
+                <td><input type="submit" id="dosub" value="立即注册" class="log_btn" /></td>
+              </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End Login End--> 
+<!--Begin Footer Begin-->
+<div class="btmbg">
+    <div class="btm">
+        备案/许可证编号：蜀ICP备12009302号-1-www.dingguagua.com   Copyright © 2015-2018 尤洪商城网 All Rights Reserved. 复制必究 , Technical Support: Dgg Group <br />
+        <img src="__PUBLIC__/Home/images/b_1.gif" width="98" height="33" /><img src="__PUBLIC__/Home/images/b_2.gif" width="98" height="33" /><img src="__PUBLIC__/Home/images/b_3.gif" width="98" height="33" /><img src="__PUBLIC__/Home/images/b_4.gif" width="98" height="33" /><img src="__PUBLIC__/Home/images/b_5.gif" width="98" height="33" /><img src="__PUBLIC__/Home/images/b_6.gif" width="98" height="33" />
+    </div>    	
+</div>
+<!--End Footer End -->    
+
+</body>
+
+
+<!--[if IE 6]>
+<script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+<script type="text/javascript">
+        $('form :input').blur(function(){
+              var itparent = $(this).parent().parent();
+              // console.log(itparent);
+              $('.info').remove();
+              $('.tt').remove();
+              //用户名验证
+              if ($(this).is('#clt_user') ) {
+                  var u = $(this).val();
+                  var patrn = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){5,21}$/;
+                  //判断用户名是否为空&用户名格式
+                  if(u == ""){
+                          var errorMsg = '用户名不能为空!';
+                          itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                  }else if(!patrn.exec(u)){
+                          var errorMsg =  '请输入6-20个以字母开头、可带数字、“_”、“.”的用户名';
+                          itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+
+                  }else{
+                      var user = $('#clt_user').val();
+                      // alert(user);
+                      // ajax验证用户名是否存在start
+                      $.get("{:U('Home/Regist/ajaxUser')}",{'clt_user':user},function(data){
+                                if(data == '1'){
+                                    var errorMsg = '用户名已被注册!';
+                                    itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                                }else{
+                                    var errorMsg = '<img src="__PUBLIC__/Home/images/ok.png" width="14" height="14" />';
+                                    $('#clt_user').after("<span class='tt' >"+ errorMsg +"</span>");
+                                }
+                      });
+                      //end
+                  }
+              }
+              //验证用户密码是否为空&密码格式
+              if ($(this).is('#clt_pass') ) {
+                    var pass = $(this).val();
+                    var patrn=/^[a-zA-Z]\w{5,21}$/;
+                    if (pass == "") {
+                        var errorMsg = '密码不能为空!';
+                        itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }else if(!patrn.exec(pass)){
+                         var errorMsg =  '请输入6-20个以字母开头、可带数字、“_”的密码';
+                          itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }
+              }
+              //验证两次密码是否一致
+              if ($(this).is('#repwd') ) {
+                    var pass = $('#clt_pass').val();
+                    var repwd = $(this).val();
+                    if (repwd == "") {
+                        var errorMsg = '确认密码不能为空!';
+                        itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }else if(repwd !==pass){
+                       var errorMsg = '两次输入的密码不一致!';
+                        itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }
+                }
+                //验证手机
+                if($(this).is('#clt_phone') ){
+                    var phone = $(this).val();
+                    // console.log(phone);
+                    var patrn = /^1[34578]\d{9}$/;
+                    if (phone == "") {
+                         var errorMsg = '手机号码不能为空!';
+                        itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }else if(!patrn.exec(phone)){
+                        var errorMsg =  '手机格式不正确';
+                          itparent.after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }
+                } 
+                //验证验证码
+                if ($(this).is('#code') ){
+                    var code = $(this).val();
+                    if (code == "") {
+                        var errorMsg = '验证码不能为空!';
+                        $('#vcyzm').after("<tr class='info'><td>&nbsp;</td><td><span style='color:#ff4e00;'>"+ errorMsg +"</span></td></tr>");
+                    }
+                }
+              
+        });
+      $('form :input').focus(function(){
+          $('.info').remove();
+      });
+
+      $('#fx').click(function(){
+    
+    if($(this).attr('check') == '0'){
+      $(this).attr('check','1');
+    }else { 
+      $(this).attr('check','0');
+      
+    }
+  });
+
+      $('#dosub').click(function(){
+          if($('#clt_user').val() == "" || $('#clt_pass').val() == "" ||$('#repwd').val() == ""  || $('#clt_phone').val() == "" || $('#fx').attr('check') != '1' || $('#code').val() == "") {
+            sweetAlert('注册失败',"请填写完整的信息!","error");
+            imgyzm.src = "{:U('Home/Regist/code')}?"+Math.random();
+            return false;
+          }
+      });
+
+</script>
+</html>

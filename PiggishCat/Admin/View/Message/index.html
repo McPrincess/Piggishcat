@@ -1,0 +1,81 @@
+<!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+    <form action="{:U('Admin/Message/index')}" method="get">
+
+        <div class="row">
+            <div class="col-xs-6 col-md-4"></div>
+            <div class="col-xs-6 col-md-3">
+                <select name="search" class="form-control">
+                    <option>请选择搜索类别</option>
+                    <option value="mee_id">留言id </option>  
+                    <option value="mee_detail">留言内容 </option>
+                    <option value="mee_status">留言状态</option>
+                
+                </select> 
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+
+                <div class="input-group">
+                    <input type="text" name="content" class="form-control" placeholder="搜索内容">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="submit">搜索</button>
+                    </span>
+                </div>   
+            </div>
+        </div>
+    </form>
+
+    <div class="am-g">
+    
+      
+      <div class="am-u-sm-12">
+        <form class="am-form">
+          <table class="am-table am-table-striped am-table-hover ">
+            <thead>
+              <tr>
+              <th>留言id</th>
+              <th>用户</th>
+              <th>留言内容</th>
+              <th>留言状态</th>
+              <th>留言时间</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          <foreach name='list' key='key' item='val'>
+            <tr>
+              <td>{$val.mee_id}</td>
+              <td>{$val.clt_id}</td>
+              <td style="width:300px">{$val.mee_detail}</td>
+              <td>{$val.mee_status}</td>
+              <td>{$val.mee_addtime}</td>
+              <td> 
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <a href="{:U('Admin/Reply/add/',array('mee_id'=>$val['mee_id'],'clt_id'=>$val['clt_id']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary" target="menuFrame"><span class="am-icon-pencil-square-o"></span>回复 </a>
+                    <a href="{:U('Admin/Reply/select/',array('mee_id'=>$val['mee_id'],'clt_id'=>$val['clt_id']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary" target="menuFrame"><span class="am-icon-pencil-square-o"></span>查看 </a>
+                  </div>
+                </div>
+              </td>
+              
+            </tr>
+          </foreach>
+          </tbody>
+        </table>
+          <div class="am-cf">
+  共 {$num}条记录
+  <div id="show">
+      {$show}
+  </div>
+</div>
+          <hr />
+          <p>注：.....</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+<include file="Public:Table_header/footer"/>

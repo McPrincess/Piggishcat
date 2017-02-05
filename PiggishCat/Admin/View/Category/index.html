@@ -1,0 +1,126 @@
+ <!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+
+
+    <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+            <form class="form-inline" action="{:U('Admin/Category/index')}" method='post'>
+                           <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                          <select class="form-control" name='search'>
+                                          <option  selected id='select'>请选择</option>
+                                          <option value='goy_id'>ID</option>
+                                          <option value='goy_name'>分类名</option>
+                                          <option value='goy_pid'>所属分类</option>
+                          </select>
+                          <!-- <span class='glyphicon glyphicon-arrow-right'></span> -->
+                           <div class="form-group">
+                                <input type="text" class="form-control" id="exampleInputName2" name='content' placeholder="请键入搜索内容">
+                              </div>
+                              <button type="submit" class="btn btn-primary" id='search_tow' disabled>搜索</button>
+            </form>
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+        <!--       <select>
+                <option value="option1">所有类别</option>
+                <option value="option2">IT业界</option>
+                <option value="option3">数码产品</option>
+                <option value="option3">笔记本电脑</option>
+                <option value="option3">平板电脑</option>
+                <option value="option3">只能手机</option>
+                <option value="option3">超极本</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </div>
+     <!--  <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <!-- <form class="am-form"> -->
+          <table class="am-table am-table-striped am-table-hover ">
+            <thead>
+              <tr>
+              <!-- <th>全选</th> -->
+              <!-- <th>用户ID</th> -->
+              <th>分类ID</th>
+              <th>分类名</th>
+              <th>所属分类ID</th>
+              <!-- <th>真实姓名</th> -->
+              <!-- <th>余额</th> -->
+              <!-- <th>消费</th> -->
+              <th>路径</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          <foreach name='list' key='key' item='val'>
+            <tr>
+              <!-- <td><input type="checkbox" /></td> -->
+              <!-- <td>{$val.clt_id}</td> -->
+              <td>{$val.goy_id}</td>
+              <td><a href="{:U('Admin/Information/index',array('goy_id'=>$val[goy_id],'goy_path'=>$val[goy_path]))}" title='查看名下信息'>{$val.goy_name}</a></td>
+              <td>{$val.goy_pid}</td>
+              <td>
+                    {$val.goy_path}
+              </td>
+              
+           
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <a href="{:U('Admin/Category/Subcategories',array('goy_id'=>$val['goy_id'],'goy_path'=>$val['goy_path']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 添加子分类</a>
+                    <a href="{:U('Admin/Category/saveCate',array('goy_id'=>$val['goy_id']))}" class="am-btn am-btn-default am-btn-xs"><span class="am-icon-copy"></span> 修改</a>
+                    <!-- <a href="{:U('Admin/Category/Subcategories',array('goy_id'=>$val['goy_id'],'goy_path'=>$val['goy_path']))}" class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 添加子分类</a> -->
+                    <a href="{:U('Admin/Category/del',array('goy_id'=>$val['goy_id']))}" class="am-btn am-btn-default am-btn-xs am-text-danger"><span class="am-icon-trash-o"></span> 删除分类</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          
+          </tbody>
+          </foreach>
+        </table>
+          <div class="am-cf">
+  共 {$count}条记录
+  <div id="show">
+      {$show}
+  </div>
+</div>
+          <hr />
+          <p>注：.....</p>
+        <!-- </form> -->
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+<script type="text/javascript">
+            $('select').blur(function(){
+                      var val = $(this).val();
+                      console.log(val);
+                      if(val != '请选择'){
+                      $('#search_tow').removeAttr('disabled');
+                      $('#select').remove();
+                      }
+            });
+</script>
+<include file="Public:Table_header/footer"/>

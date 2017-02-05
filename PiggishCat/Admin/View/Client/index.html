@@ -1,0 +1,157 @@
+ <!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+
+    <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf"> 
+          <div class="am-btn-toolbar am-fl">
+
+            <div class="am-form-group am-margin-left am-fl">
+        <!--<select>
+                <option value="option1">所有类别</option>
+                <option value="option2">IT业界</option>
+                <option value="option3">数码产品</option>
+                <option value="option3">笔记本电脑</option>
+                <option value="option3">平板电脑</option>
+                <option value="option3">只能手机</option>
+                <option value="option3">超极本</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </div>
+     <!--  <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <form action="{:U('Admin/Client/index')}" method="get">
+
+        <div class="row" style="width: 960px;">
+            <div class="col-xs-6 col-md-4"></div>
+            <div class="col-xs-6 col-md-3">
+                <select name="search" class="form-control">
+                    <option>请选择搜索类别</option>
+                    <option value="clt_id">id</option>
+                    <option value="clt_user">name</option>
+                    <option value="clt_phone">phone</option>
+                
+                </select> 
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+
+                <div class="input-group">
+                    <input type="text" name="content" class="form-control" placeholder="搜索内容">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="submit">搜索</button>
+                    </span>
+                </div>   
+            </div>
+        </div>
+    </form>
+    <!-- <form action="{:U('Admin/Client/index')}" method="get">
+                <select name="search" class="input_select">
+                    <option value="clt_id">id</option>
+                    <option value="clt_user">name</option>
+                    <option value="clt_phone">phone</option>
+                </select>
+
+                <input type="text" name="content">
+                <input type="submit" value="搜索">
+             </form> -->
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <!-- <form class="am-form"> --> 
+          <table class="am-table am-table-striped am-table-hover ">
+            <thead>
+              <tr>
+              <th>ID</th>
+              <th>帐号</th>
+              <th>手机</th>
+              <th>姓别</th>
+              <th>真实姓名</th>
+              <th>头像</th>
+              <th>余额</th>
+              <th>消费</th>
+              <th>状态</th>
+              <th>添加时间</th>
+              </tr>
+          </thead>
+          <tbody>
+          <!-- 遍历用户 start --> 
+          <foreach name='list' key='key' item='val'>
+            <tr>
+              <td>{$val.clt_id}</td>
+              <!-- <td>{$val.clt_id}</td> -->
+              <td>{$val.clt_user}</td>
+              <td>{$val.clt_phone}</td>
+              <td>{$val.clt_sex}</td>
+              <td>{$val.clt_realname} </td> 
+              <td style="text-align:center;">
+                          <div class="span12">
+                            <img src="__PUBLIC__/image/Clientpic/{$val['clt_pic']}" style='width:45px'/>
+                          </div>
+              </td>
+              <td>{$val.clt_moeny}</td>
+              <td>{$val.clt_spending}</td>
+              <td >
+                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary chstatus" onclick="savestat({$val.clt_id},this)" ><span class="am-icon-pencil-square-o">{$val.clt_status}</span> </button>
+              </td>
+              <td>{$val.clt_addtime}</td>
+            </tr>
+            </foreach>
+          <!-- 遍历用户 end -->
+
+          </tbody>
+        
+        </table>
+          <div class="am-cf">
+  <!-- 共 {$count}条记录 -->
+  <div id="show">
+      {$show}
+  </div>
+</div>
+          <hr />
+
+        <!-- </form> -->
+      </div>
+
+    </div>
+  </div>
+  <!-- content end --> 
+</div>
+<script>
+    function savestat(id,btn){
+      // console.log(1);
+       //  // 获取当前元素的状态 
+       var clt_status = $(btn).children().html();
+       console.log(clt_status);
+       // var clt_id = $(btn).val();
+       // console.log(id);
+       if(clt_status == '启用中'){
+            $.post("{:U('Admin/Client/ajaxUpdate')}",{'clt_status':1,'clt_id':id},function(data){
+                    $(btn).children().html('禁用中');
+                });
+            return false;
+          }else if(clt_status == '禁用中'){
+              $.post("{:U('Admin/Client/ajaxUpdate')}",{'clt_status':2,'clt_id':id},function(data){
+                      $(btn).children().html('启用中');
+                  });
+              return false;
+            }
+        
+      
+}
+</script>
+<include file="Public:Table_header/footer"/>

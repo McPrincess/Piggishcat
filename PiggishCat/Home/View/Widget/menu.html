@@ -1,0 +1,30 @@
+
+<ul>      
+                  <foreach name='TopCate' key="key" item='Topcategory'>
+                    <li class='Category' onmousemove="test(this)">
+                        <div class="fj">
+                            <span class="n_img"><span></span><img src="__PUBLIC__/Home/images/nav1.png" /></span>
+                            <span class="fl">{$Topcategory.goy_name}</span>
+
+                        </div>
+
+                        <div class="zj">
+                            <div class="zj_l">
+                                <foreach name='SecCate[$Topcategory["goy_id"]]' item='secondCate'>
+                                <div class="zj_l_c">
+                                   <h2>{$secondCate.goy_name}</h2>
+                                   <foreach name='ThreeCate[$secondCate["goy_id"]]' item='ThreeCategory'>
+                                    <a href="{:U('Home/Classificationgoods/index',array('goy_id'=>$ThreeCategory['goy_id']))}">{$ThreeCategory['goy_name']}</a>|
+                                    </foreach>
+                                </div>
+                                    </foreach>
+                                
+                            </div>
+                            <div class="zj_r">
+                                <a href="#"><img src="__PUBLIC__/Home/images/n_img1.jpg" width="236" height="200" /></a>
+                                <a href="#"><img src="__PUBLIC__/Home/images/n_img2.jpg" width="236" height="200" /></a>
+                            </div>
+                        </div>
+                    </li>
+                    </foreach>
+                </ul>            

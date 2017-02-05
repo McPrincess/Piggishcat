@@ -1,0 +1,15 @@
+<footer>
+  <hr>
+  <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+</footer>
+
+<load href="__PUBLIC__/assets/js/jquery.min.js" />
+<load href="__PUBLIC__/assets/js/amazeui.min.js" />
+<load href="__PUBLIC__/assets/js/app.js" />
+<script type="text/javascript">
+   $('#show').children().children().unwrap().wrap('<li></li>').parent().wrapAll('<ul class="pagination"></ul>');
+    // 显示当前页码
+    $('#show .current').parent().addClass('active');
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+ <!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+
+    <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+        <!--       <select>
+                <option value="option1">所有类别</option>
+                <option value="option2">IT业界</option>
+                <option value="option3">数码产品</option>
+                <option value="option3">笔记本电脑</option>
+                <option value="option3">平板电脑</option>
+                <option value="option3">只能手机</option>
+                <option value="option3">超极本</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </div>
+     <!--  <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="am-g">
+       <div class="am-g">
+      <div class="am-u-sm-12">
+      <h2>首页JS效果图</h2>
+          <table class="am-table am-table-striped am-table-hover " style='font-size:13' id='tab'>
+            <thead>
+          
+              <tr>
+              <th>ID</th>
+              <th>图片</th>
+              <th>描述</th>
+              <th>添加时间</th>
+              <th>状态</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          <foreach name='showAdv' key='key' item='val'>
+            <tr>
+                <td>{$val.id}</td>
+                 <td>
+                     <a href="__PUBLIC__/image/Advpicture/homeAdv_{$val[picture]}" target='_blank' title='点击打开查看大图'> <img src="__PUBLIC__/image/Advpicture/homeAdv_{$val[picture]}"  width="50px;"></a>
+              </td>
+              <td style='width:200px'>{$val.description}</td>
+  
+               <td>
+                  {$val.addtime} 
+                </td>
+             <td>
+                <button  type="button" class="btn btn-warning btn btn-default btn-sm" onclick="change({$val.id},this)">{$val.status}</button>
+             </td>
+              <td id='up' Saveurl="{:U('Admin/Blogroll/Save')}">
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                   
+                    <button class="am-btn am-btn-default btn-sm am-text-danger delete"  onclick="delAdv({$val.id},this)">删除</button>
+                    
+                  </div>
+                </div>
+              </td>
+            </tr>
+          
+          </tbody>
+          </foreach>
+        </table>
+          <div class="am-cf">
+  <div id="show">
+      {$show}
+  </div>
+</div>
+          <hr />
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+<script type="text/javascript">
+    //修改广告图状态
+  function change(id,btn){
+    var status = $(btn).html();
+    if(status == '禁用'){
+      $.get("{:U('Admin/Advpicture/changeStatus')}",{'id':id,'status':2},function(data){
+        if(data == '1'){
+          $(btn).html('启用');
+        }
+      });
+    }else if(status == '启用'){
+      $.get("{:U('Admin/Advpicture/changeStatus')}",{'id':id,'status':1},function(data){
+        if(data == '1'){
+          $(btn).html('禁用');
+        }
+      });
+    }
+    
+  }
+
+  function delAdv(id,btn){
+     var tr = $(btn).parents('tr');
+     $.get("{:U('Admin/Advpicture/deleteAdv')}",{'id':id},function(data){
+          if(data == '1'){
+              alert('删除成功 ! ! !');
+            tr.remove();
+          }
+     });
+  }
+</script>
+
+<include file="Public:Table_header/footer"/>

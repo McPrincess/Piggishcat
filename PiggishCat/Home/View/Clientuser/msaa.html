@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+</head>
+<body>  
+  
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+    <!--End Header End-->  
+<div class="i_bg bg_color">
+    <!--Begin 用户中心 Begin -->
+	<div class="m_content">
+   	<!-- 左边菜单 start -->
+   <div class="m_left">
+            <div class="left_n">个人中心</div>
+                <div class="left_m">
+                <div class="left_m_t t_bg2">会员中心</div>
+                <ul>
+                    <li><a href="{:U('Home/Clientuser/index')}">我的资料</a></li>
+                    <li><a href="{:U('Home/Enshrine/index')}">我的收藏</a></li>
+                      <li><a href="{:U('Home/Link/index')}">浏览记录</a></li>
+                    <li><a href="{:U('Home/Message/index')}">我的留言</a></li>
+                    <li><a href="{:U('Home/Clientuser/safe')}">账户安全</a></li>
+                    <li><a href="{:U('Home/Clientuser/usermessage')}">完善资料</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                     <li><a href="{:U('Home/Orderform/index')}">我的订单</a></li>
+                        <li><a href="#">我的评论</a></li>
+                    <li><a href="{:U('Home/Address/index')}">收货地址</a></li>
+                    <li><a href="#">缺货登记</a></li>
+                    <li><a href="#">跟踪订单</a></li>
+                </ul>
+            </div> 
+        </div>
+    <!-- 左边菜单 end -->
+	<div class="m_right">
+        	<div class="wlfg-wrap clearfix ">
+                            <label class="label-name" for="job">头像：</label>
+                            <div class="rlf-group">
+                                <img class="fl avator-img" id="js-portrait" src="http://img.mukewang.com/5458453d0001cd0102200220-200-200.jpg" data-portrait="5458453d0001cd0102200220" width="180" height="180">
+                                <div class="fl ml20 pr">
+                                    <div><input type="button" hidefocus="true" value="换一换" class="js-avator-try avator-try"></div>
+                                    <div id="avator-btns" class="avator-btn-inner">
+                                                                                                                                                                                
+                                        <div class="avator-btn-wrap">
+                                            <form target="uploadtarget" action="postpic" method="post" enctype="multipart/form-data">
+                                                <a href="javascript:void(0)" hidefocus="true" class="avator-btn-fake">上传头像</a>
+                                                <input class="hide" type="file" title="上传头像" name="fileField" id="upload" accept="image/*">
+                                                <input class="hide" type="hidden" name="type" value="1">
+                                            </form>
+                                            <iframe src="about:blank" id="uploadtarget" name="uploadtarget" frameborder="0" style="display:none;"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cb"></div>
+                                <p class="rlf-tip-wrap errorHint color-red"></p>
+                            </div>
+                        </div>
+        		
+        	</div>
+            
+
+            
+               
+            
+        </div>
+    </div>
+	<!--End 用户中心 End--> 
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   
+

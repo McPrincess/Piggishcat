@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/alert/js/sweet-alert.js" />
+    <load href="__PUBLIC__/Home/alert/css/sweet-alert.css" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+<style>
+            body{height:1000px;}
+            #login{width:600px;height:380px;background:white;border:2px solid lightgray;text-align:center;border-radius:10px;display:none;position:absolute;left:50%;top:50%;margin-left:-150px;margin-top:-150px;z-index:1000}
+             #editt{width:600px;height:380px;background:white;border:2px solid lightgray;text-align:center;border-radius:20px;display:none;position:absolute;left:50%;top:50%;margin-left:-150px;margin-top:-150px;z-index:1000}
+            #submit1{
+              width: 90px;
+              height: 25px;
+              background: #ff4e00;
+              margin-left: 10px;
+              text-align: center;
+              margin-right: 20px;
+              float: right;
+            }
+        </style>
+</head>
+<body>  
+
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+    <!--End Header End-->  
+<div class="i_bg bg_color">
+    <!--Begin 用户中心 Begin -->
+	<div class="m_content">
+   		<!-- 左边菜单 start -->
+    <div class="m_left">
+            <div class="left_n">个人中心</div>
+                <div class="left_m">
+                <div class="left_m_t t_bg2">会员中心</div>
+                <ul>
+                    <li><a href="{:U('Home/Clientuser/index')}">我的资料</a></li>
+                    <li><a href="{:U('Home/Enshrine/index')}">我的收藏</a></li>
+                      <li><a href="{:U('Home/Link/index')}">浏览记录</a></li>
+                    <li><a href="{:U('Home/Message/index')}">我的留言</a></li>
+                    <li><a href="{:U('Home/Clientuser/safe')}">账户安全</a></li>
+                    <li><a href="{:U('Home/Clientuser/usermessage')}">完善资料</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                     <li><a href="{:U('Home/Orderform/index')}">我的订单</a></li>
+                        <li><a href="#">我的评论</a></li>
+                    <li><a href="{:U('Home/Address/index')}">收货地址</a></li>
+                    <li><a href="#">缺货登记</a></li>
+                    <li><a href="#">跟踪订单</a></li>
+                </ul>
+            </div> 
+        </div>
+    <!-- 左边菜单 end -->
+		<div class="m_right">
+
+            
+
+            <div class="mem_tit">收货地址</div>
+             <if condition="$useraddress eq NULL">
+            <div style="text-align: center;margin-top:150px"><h2 >您还没有添加任何收货地址</h2>
+            <a class="addAddress" align="center" id="addAddress"><font color="blue" size="3">+新建地址</font></a></div>
+            <else />
+             <div style="text-align: right;margin-right:50px;" ><a href="{:U('Home/Shoppingcart/cartConfirm')}" style="background:#e8e8e8">返回结算</a>&nbsp;&nbsp;&nbsp;&nbsp;<a id="addAddress" style="background:#e8e8e8">+添加收货地址</a></div>
+		<div class="address">
+            	<div class="a_close"></div>
+            	<table style='font-size:13; text-align: center' class="add_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
+             
+            <thead>
+              <tr style="background:#d8d8d8">
+              <th>收件人</th>
+              <th>详细地址</th>
+              <th>联系方式</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          <!-- 遍历用户地址start -->
+          <foreach name="useraddress" key="key" item="val">
+            <tr>
+              <td>{$val.clt_name}</td>
+              <td style='color:green'>{$val.clt_address}</td>
+              <td>{$val.clt_phone}</td>
+                <td>
+                <a href="{:U('Home/Address/Saveaddress',array('ads_id'=>$val['ads_id']))}">编辑</a>&nbsp;&nbsp;
+                <a onclick="adsDel({$val['ads_id']},this)">删除</a>&nbsp;&nbsp;
+                <!-- 判断是否是默认地址start -->
+                <if condition="$val.ads_status eq 1">
+                <span style="color:#ff4e00;">默认地址</span>
+                <else />
+                <a href="" style="color:#ff4e00;">设为默认地址</a>
+                </if>
+                <!-- 判断是否是默认地址end -->
+
+                </td>
+            </tr>
+            </foreach>
+
+          <!-- 遍历用户地址end -->
+
+          </tbody>
+        </table>
+				
+                <p align="right">
+                	&nbsp; &nbsp; &nbsp; &nbsp; 
+                </p>
+
+            </div>
+            </if>
+            
+      <!-- 新建地址start -->
+      <div id="login" >
+             <form id="iconForm"   enctype="multipart/form-data" method="post" >
+                  <div style="font-size: 16px;margin-left: 25px;margin-bottom: 25px;margin-top: 30px">新建地址</div>
+
+                  <div>
+                        <table border="0" class="add_tab" style="width:600px;"  cellspacing="0" cellpadding="0">
+                        <tr>
+                <td align="right" style="width:60px">收货人姓名</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text" id="sh" name="clt_name" placeholder="姓名" class="add_ipt" /></td>
+                <td style='width:150px'><span id="shspan"></span></td>
+              </tr>
+              <tr>
+                <td align="right"  style="width:60px">手机</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text"  id="tel" name="clt_phone" placeholder="手机" class="add_ipt" /></td>
+                <td style='width:150px'><span id="telspan"></span></td>
+                
+              </tr>
+              <tr>
+                <td width="135" align="right"  style="width:60px">配送地区</td>
+                <td colspan="3" style="font-family:'宋体';">
+                  <select  name="provinces" style="margin-left: -100px" id="province">
+
+                      <option value="0" selected="selected" >省</option>
+                      <!-- 遍历三级 -->
+                      <foreach name="areaslist" key="key" item="val">
+                      <option value="{$val.area_id}"  class="pro">{$val.area_name}</option>
+                      </foreach>
+                      <!-- 遍历三级 -->
+                    </select>
+                    <select  style="margin-left: 20px" name="citys" id="city">
+
+                      <option value="0"  >市</option>
+                      
+                    </select>
+                    <select  style="margin-left: 20px"  id="district">
+
+                      <option value="0"  >区</option>
+                      
+                    </select>
+                 
+                </td>
+                <td style='width:150px'><span id="prospan"></span></td>
+              </tr>
+              
+              <tr>
+                 <td align="right">详细地址</td>
+                <td colspan="3" style="font-family:'宋体';"><textarea placeholder="详细地址" id="xqaddress" cols="40" rows="5" ></textarea></td>
+                <td style='width:150px'><span id="xqspan"></span></td>
+
+              </tr>
+              
+            </table>
+            <p align="right">
+              <a class="add_b" id="submit1">确认</a>&nbsp; &nbsp; <a id="del">取消</a>
+            </p> 
+
+                  </div>
+
+    </form>
+        </div>
+      <!-- 新建地址end -->
+
+       <!-- 编辑地址start -->
+      <div id="editt" >
+             <form id="iconForm"   enctype="multipart/form-data" method="post" >
+                  <div style="font-size: 16px;margin-left: 25px;margin-bottom: 25px;margin-top: 30px">编辑地址</div>
+
+                  <div>
+                        <table border="0" class="add_tab" style="width:600px;"  cellspacing="0" cellpadding="0">
+                        <tr>
+                <td align="right" style="width:60px">收货人姓名</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text" id="sh" name="clt_name" placeholder="姓名" class="add_ipt" /></td>
+                <td style='width:150px'><span id="shspan"></span></td>
+              </tr>
+              <tr>
+                <td align="right"  style="width:60px">手机</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text"  id="tel" name="clt_phone" placeholder="手机" class="add_ipt" /></td>
+                <td style='width:150px'><span id="telspan"></span></td>
+                
+              </tr>
+              <tr>
+                <td width="135" align="right"  style="width:60px">配送地区</td>
+                <td colspan="3" style="font-family:'宋体';">
+                  <select  name="provinces" style="margin-left: -100px" id="province">
+
+                      <option value="0" selected="selected" >省</option>
+                      <!-- 遍历三级 -->
+                      <foreach name="areaslist" key="key" item="val">
+                      <option value="{$val.area_id}"  class="pro">{$val.area_name}</option>
+                      </foreach>
+                      <!-- 遍历三级 -->
+                    </select>
+                    <select  style="margin-left: 20px" name="citys" id="city">
+
+                      <option value="0"  >市</option>
+                      
+                    </select>
+                    <select  style="margin-left: 20px"  id="district">
+
+                      <option value="0"  >区</option>
+                      
+                    </select>
+                 
+                </td>
+                <td style='width:150px'><span id="prospan"></span></td>
+              </tr>
+              
+              <tr>
+                 <td align="right">详细地址</td>
+                <td colspan="3" style="font-family:'宋体';"><textarea placeholder="详细地址" id="xqaddress" cols="40" rows="5" ></textarea></td>
+                <td style='width:150px'><span id="xqspan"></span></td>
+
+              </tr>
+              
+            </table>
+            
+            <p align="right">
+                 
+              <a class="add_b" id="submit2">确认</a>&nbsp; &nbsp; <a id="delad">取消</a>
+            </p> 
+
+                  </div>
+
+    </form>
+        </div>
+      <!-- 新建地址end -->
+            
+        </div>
+    </div>
+	<!--End 用户中心 End--> 
+      <script type="text/javascript">
+           var div;
+        addAddress.onclick = function(){
+            gai();
+            document.body.style.height = '0';
+            login.style.display = 'block';
+            
+        }
+
+        del.onclick = function(){
+            
+            document.body.style.height = '';
+            login.style.display = 'none';
+            div.parentNode.removeChild(div);
+        
+        }
+        
+        function gai(){
+            div = document.createElement('div');
+            div.style.width = '100%';
+            div.style.height = '100%';
+            div.style.background ='rgba(100,100,100,0.7)';
+            div.style.position = 'fixed';
+            div.style.top = 0;
+            div.style.left = 0;
+
+            document.body.appendChild(div);
+        }
+
+        //三级联动
+        $('#province').change(function(){
+                district.length=1;
+                query($(this),'city');
+        });
+        $('#city').change(function(){
+                 query($(this),'district');
+        });
+
+        function query(a,target){
+              var areaid = a.val();
+              // console.log(areaid);
+              $.get("{:U('Home/Address/AreasSel')}",{'area_id':areaid},function(data){
+                            var obj = data;
+                            var val = document.getElementById(target);
+                            val.length = 1;
+                            for (key in obj) {
+                                  var opt = document.createElement('option');
+                                  opt.value = obj[key]['area_id'];
+                                  opt.innerHTML = obj[key]['area_name'];
+                                  val.appendChild(opt);
+                            }
+
+              });
+        }
+
+        //数据的验证
+        $('#sh').blur(function(){
+                if($(this).val() == ''){
+                      $('#shspan').html("<font color='red' size='1'>收货人不能为空!</font>");
+                }else if(!$(this).val().match(/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/)){
+                      $('#shspan').html("<font color='red' size='1'>您输入的含有非法字符!</font>");
+                      $('#sh').val('');
+                }
+        });
+        $('#sh').focusin(function(){
+                $('#shspan').html('');
+        });
+        //验证手机
+        $('#tel').blur(function(){
+                if($(this).val() == ''){
+                      $('#telspan').html("<font color='red' size='1'>手机号码不能为空!</font>");
+                }else if(!$(this).val().match(/^1[3-8][0-9]\d{8}$/)){
+                      $('#telspan').html("<font color='red' size='1'>手机号码有误!</font>");
+                      $('#tel').val('');
+                }
+        });
+        $('#tel').focusin(function(){
+                $('#telspan').html('');
+        });
+        //详细地址验证
+        $('#xqaddress').blur(function(){
+                if($(this).val() == ''){
+                      $('#xqspan').html("<font color='red' size='1'>详情地址不能为空!</font>");
+                }
+                // else if(!$(this).val().match(/^[\u4e00-\u9fa5_\-\/a-zA-Z0-9]+$/)){
+                //       $('#xqspan').html("<font color='red' size='1'>您输入的含有非法字符!</font>");
+                //       $('#xqaddress').val('');
+                // }
+        });
+        $('#xqaddress').focusin(function(){
+                $('#xqspan').html('');
+        });
+       
+        //上传地址
+        $('#submit1').click(function(){
+                  if ($('#sh').val() == "" || $('#tel').val() == "" || $('#xqaddress').val() == "") {
+                        sweetAlert("添加失败", "请填完整信息后再提交!", "error");
+                        return false;
+                  }else if($('#province').val() == '0') {
+                      sweetAlert("添加失败", "请选择所在地区后提交!", "error");
+                      return false;
+                  } else{
+                          //判断是否设置默认 
+                          // var val = $('input:radio:checked').val();
+                          // console.log(val);
+                          // if(val == null) {
+                          //      $('#dft').val(2);
+                          //   var ads_status = $('#dft').val();
+                          // }else {
+                          //     $('#dft').val(1);
+                          //   var ads_status = $('#dft').val();
+                          // }
+                          
+                          var sh = $('#sh').val();
+                          var tel = $('#tel').val();
+                          var xqaddress = $('#xqaddress').val();
+                         // 
+                         var clt_id = ('{$Think.session.homeuser.clt_id}');
+                          var province = $("#province").find("option:selected").text();
+                          var city = $("#city").find("option:selected").text();
+                          var district = $("#district").find("option:selected").text();
+                          var Thaddress = province + city + district + xqaddress;
+                          // console.log(Thaddress);
+                          $.post("{:U('Home/Address/InsterAddress')}",{'clt_id':clt_id,'clt_name':sh,'clt_phone':tel,'clt_address':Thaddress},function(data){
+                                 if (data > 0){
+                                     swal("添加成功!", "", "success");
+                                     setTimeout(function(){
+                                            window.location.href="{:U('Home/Address/index')}";
+                                     },2000);
+                                 }else {
+                                         sweetAlert("添加失败", "默认地址只能是5个!", "error");
+                                              setTimeout(function(){
+                                                window.location.href="{:U('Home/Address/index')}";
+                                         },2000);
+                                 }
+                          });
+
+                  }
+        });
+    
+      //删除地址
+      function adsDel(id,btn)
+      {
+            var tr = $(btn).parents('tr');
+            // console.log(tr);
+            $.get("{:U('Home/Address/Deladds')}",{'ads_id':id},function(data){
+                    if (data == '1') {
+                         swal("删除成功!", "", "success")
+                                tr.remove();
+                                setTimeout(function(){
+                                                window.location.href="{:U('Home/Address/index')}";
+                                         },1000);
+                    };
+            });
+      }
+
+   
+ $('tr').hover(function(){
+        // alert(1);
+        // 先将原来的颜色存储起来，再改变为黄色
+        $(this).data('key', $(this).css('backgroundColor')).css('background', 'lightgreen');
+    }, function(){
+        // alert(2);
+        //将颜色还原为刚才存储起来的值
+        $(this).css('background', $(this).data('key'));
+    });
+      
+      </script>
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   

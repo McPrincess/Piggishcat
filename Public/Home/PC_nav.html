@@ -1,0 +1,19 @@
+<div class="menu_bg">
+	<div class="menu">
+    	<!--Begin 商品分类详情 Begin-->    
+    	<div class="nav">
+        	<div class="nav_t">全部商品分类</div>
+            <div class="leftNav none">
+                 {~W('Category/menu')}      
+            </div>
+        </div>  
+        <!--End 商品分类详情 End-->    <!--End 商品分类详情 End-->                                                     
+        <ul class="menu_r">                                                                                                                                               
+            <li><a href="{:U('Home/Index/Index')}">首页</a></li>
+            <foreach name='TopCate' item='Topcategory'> 
+            <li><a href="{:U('Home/Category/Category',array('goy_id'=>$Topcategory[goy_id]))}">{$Topcategory.goy_name}</a></li>
+           </foreach>
+        </ul>
+        <div class="m_ad">中秋送好礼！</div>
+    </div>
+</div>

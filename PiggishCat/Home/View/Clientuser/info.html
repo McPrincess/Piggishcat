@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+</head>
+<body>  
+  
+    <!--Begin Header Begin-->
+<div class="m_right">
+        	<div class="m_des">
+            <table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td width="115"><img src="__PUBLIC__/image/Clientpic/{$userInfo.clt_pic}" width="90" height="90" /></td>
+                    <td>
+                    	<div class="m_user">{$userInfo.clt_user}</div>
+                        <p>
+                            等级：注册用户 <br />
+                            
+                    </td>
+                  </tr>
+                </table>	
+            </div>
+            
+            
+
+            <div class="mem_t">账号信息</div>
+            <table border="0" class="mon_tab" style="width:870px; margin-bottom:20px;" cellspacing="0" cellpadding="0">
+              <tr>
+                
+                <td width="60%">账户余额：<span style="color:#555555;">{$userInfo.clt_moeny}</span></td>
+              </tr>
+              <tr>
+                <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">{$Think.session.homeuser.clt_phone}</span></td>
+                <td>消费金额：<span style="color:#555555;">{$userInfo.clt_spending}</span></td>
+              </tr>
+              <tr>
+                <td>身份证号：<span style="color:#555555;">{$userInfo.clt_identity}</span></td>
+                <td>注册时间：<span style="color:#555555;">{$userInfo.clt_addtime}</span></td>
+              </tr>
+            </table>
+               
+            
+        </div>

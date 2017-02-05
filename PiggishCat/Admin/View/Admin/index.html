@@ -1,0 +1,139 @@
+ <!-- 引入头部 -->
+ <include file="Public:Table_header/header"/>
+
+
+  <!-- content start -->
+
+    <div class="am-cf am-padding">
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-md-6 am-cf">
+        <div class="am-fl am-cf">
+          <div class="am-btn-toolbar am-fl">
+            <div class="am-btn-group am-btn-group-xs">
+              <a type="button" class="am-btn am-btn-default xinzeng" href="{:U('Admin/admin/add')}"><span class="am-icon-plus"></span> 新增 </a>
+              <!-- <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button> -->
+            </div>
+
+            <div class="am-form-group am-margin-left am-fl">
+        <!--       <select>
+                <option value="option1">所有类别</option>
+                <option value="option2">IT业界</option>
+                <option value="option3">数码产品</option>
+                <option value="option3">笔记本电脑</option>
+                <option value="option3">平板电脑</option>
+                <option value="option3">只能手机</option>
+                <option value="option3">超极本</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+      </div>
+     <!--  <div class="am-u-md-3 am-cf">
+        <div class="am-fr">
+          <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+                <span class="am-input-group-btn">
+                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                </span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="am-g">
+      <div class="am-u-sm-12">
+        <!-- <form class="am-form"> -->
+          <table id="tab" class="am-table am-table-striped am-table-hover " delurl="{:U('Admin/Admin/delete')}" >
+            <thead> 
+              <tr>
+              <th>ID</th>
+              <th>帐号</th>
+              <th>姓名</th>
+              <th>手机</th>
+              <th>角色</th>
+              <th>权限</th>
+              <th>操作</th>
+              </tr>
+          </thead>
+          <tbody>
+          <foreach name='list' key='key' item='val'>
+
+            <tr>
+              <td class="adminidd">{$val.adn_id}</td>
+              <td>{$val.adn_user}</td>
+              <td>{$val.adn_name}</td>
+              <td>{$val.adn_phone}</td>
+              <td>{$val.adn_grade}</td>
+              <!-- 这里判断权限超管才显示 -->
+              <td >
+              <button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="changStatus({$val.adn_id},this);" >{$val.adn_status}</button>
+              </td>
+
+              <!-- <td><button class="am-btn am-btn-default am-btn-xs am-text-secondary" onclick="stu({$val.adn_id},this);">禁用</button></td> -->
+              <!-- end -->
+
+              <td>
+                <div class="am-btn-toolbar">
+                  <div class="am-btn-group am-btn-group-xs">
+                    <a class="am-btn am-btn-default am-btn-xs am-text-secondary editt" href="{:U('Admin/Admin/save',array('adn_id'=>$val['adn_id']) )}" ><span class="am-icon-pencil-square-o"></span> 编辑</a>
+                    <button class="am-btn am-btn-default am-btn-xs am-text-danger " onclick="del({$val.adn_id},this)"><span class="am-icon-trash-o">删除 </span> </button>
+                     <!-- href="{:U('Admin/Admin/del',array('adn_id'=>$val['adn_id']) )}" -->
+                  </div>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          
+          </tbody>
+          </foreach>
+        </table>
+          <div class="am-cf">
+  共 {$count}条记录
+  <div id="show">
+      {$show}
+  </div>
+</div>
+          <hr />
+          <p>注：.....</p>
+        <!-- </form> -->
+      </div>
+
+    </div>
+  </div>
+  <!-- content end -->
+</div>
+<script src='__PUBLIC__/js/admin.js'></script>
+<script type="text/javascript">
+        function changStatus(id,btn)
+        {
+            var adn_status = $(btn).html();
+            // console.log(id);
+            // console.log(adn_status);
+            if(adn_status == '启用中'){
+                $.post("{:U('Admin/Admin/Savestuu')}",{'adn_status':2,'adn_id':id},function(data){
+                            $(btn).html('禁用中');
+                });
+            }else if(adn_status == '禁用中'){
+              $.post("{:U('Admin/Admin/Savestuu')}",{'adn_status':1,'adn_id':id},function(data){
+                            $(btn).html('启用中');
+                });
+            }
+          
+       }
+
+       var adn_grade = ('{$Think.session.adminInfo.adn_grade}');
+       // console.log(adn_grade);
+       // $('button').click(function(){
+          if (adn_grade > 0){
+              $('button').attr('disabled','disabled');
+              $('.editt').attr('disabled','disabled');
+              $('.xinzeng').attr('disabled','disabled');
+              // if()
+          }
+       // });
+
+</script>
+<include file="Public:Table_header/footer"/>

@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/alert/js/sweet-alert.js" />
+    <load href="__PUBLIC__/Home/alert/css/sweet-alert.css" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+<style>
+            body{height:1000px;}
+            #login{width:600px;height:380px;background:white;border:2px solid lightgray;text-align:center;border-radius:20px;display:block;left:50%;top:50%;margin:0 auto;margin-top:30px;z-index:1000}
+            
+            #submit1{
+              width: 90px;
+              height: 25px;
+              background: #ff4e00;
+              margin-left: 10px;
+              text-align: center;
+              margin-right: 20px;
+              float: right;
+            }
+        </style>
+</head>
+<body>  
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+    <!--End Header End-->  
+<div class="i_bg bg_color">
+    <!--Begin 用户中心 Begin -->
+	<div class="m_content">
+   		<!-- 左边菜单 start -->
+    <div class="m_left">
+          <div class="left_n">个人中心</div>
+                <div class="left_m">
+                    <div class="left_m_t t_bg2">会员中心</div>
+                    <ul>
+                        <li><a href="{:U('Home/Clientuser/index')}">我的资料</a></li>
+                        <li><a href="{:U('Home/Enshrine/index')}">我的收藏</a></li>
+                          <li><a href="{:U('Home/Link/index')}">浏览记录</a></li>
+                        <li><a href="{:U('Home/Message/index')}">我的留言</a></li>
+                        <li><a href="{:U('Home/Clientuser/safe')}">账户安全</a></li>
+                        <li><a  href="{:U('Home/Clientuser/usermessage')}">完善资料</a></li>
+                    </ul>
+                </div>
+            <div class="left_m">
+              <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                     <li><a href="{:U('Home/Orderform/index')}">我的订单</a></li>
+                        <li><a href="#">我的评论</a></li>
+                    <li><a href="{:U('Home/Address/index')}">收货地址</a></li>
+                    <li><a href="#">缺货登记</a></li>
+                    <li><a href="#">跟踪订单</a></li>
+                </ul>
+            </div>   
+        </div>
+    <!-- 左边菜单 end -->
+		<div class="m_right">
+
+           
+            
+      <!-- 新建地址start -->
+      <div id="login" >
+             <form id="iconForm"   enctype="multipart/form-data" method="post" >
+                  <div style="font-size: 16px;margin-left: 25px;margin-bottom: 25px;margin-top: 30px">编辑地址</div>
+
+                  <div>
+                        <table border="0" class="add_tab" style="width:600px;"  cellspacing="0" cellpadding="0">
+
+                        <tr>
+                <td align="right" style="width:60px">收货人姓名</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text" id="sh" value="{$useraddress[0]['clt_name']}"  class="add_ipt" /></td>
+                <td style='width:150px'><span id="shspan"></span></td>
+              </tr>
+              <tr>
+                <td align="right"  style="width:60px">手机</td>
+                <td colspan="3" style="font-family:'宋体';"><input type="text"  id="tel" value="{$useraddress[0]['clt_phone']}" name="clt_phone" placeholder="手机" class="add_ipt" /></td>
+                <td style='width:150px'><span id="telspan"></span></td>
+                
+              </tr>
+              <tr>
+                <td width="135" align="right"  style="width:60px">配送地区</td>
+                <td colspan="3" style="font-family:'宋体';">
+                  <select  name="provinces" style="margin-left: -100px" id="province">
+
+                      <option value="0" selected="selected" >省</option>
+                      <!-- 遍历三级 -->
+                      <foreach name="areaslist" key="key" item="val">
+                      <option value="{$val.area_id}"  class="pro">{$val.area_name}</option>
+                      </foreach>
+                      <!-- 遍历三级 -->
+                    </select>
+                    <select  style="margin-left: 20px" name="citys" id="city">
+
+                      <option value="0"  >市</option>
+                      
+                    </select>
+                    <select  style="margin-left: 20px"  id="district">
+
+                      <option value="0"  >区</option>
+                      
+                    </select>
+                 
+                </td>
+                <td style='width:150px'><span id="prospan"></span></td>
+              </tr>
+              
+              <tr>
+                 <td align="right">详细地址</td>
+                <td colspan="3" style="font-family:'宋体';"><textarea placeholder="{$useraddress[0]['clt_address']}" id="xqaddress" cols="40" rows="5" value="{$useraddress[0]['clt_address']}"></textarea></td>
+                <td style='width:150px'><span id="xqspan"></span></td>
+
+              </tr>
+              
+            </table>
+            
+            <p align="right">
+              <a class="add_b" id="submit1"adss="{$useraddress[0]['ads_id']}">确认修改</a>&nbsp; &nbsp; <input type="reset"></input> 
+            </p> 
+
+                  </div>
+
+    </form>
+        </div>
+      <!-- 新建地址end -->
+
+      
+        </div>
+    </div>
+	<!--End 用户中心 End--> 
+      <script type="text/javascript">
+           
+
+        //三级联动
+        $('#province').change(function(){
+                district.length=1;
+                query($(this),'city');
+        });
+        $('#city').change(function(){
+                 query($(this),'district');
+        });
+
+        function query(a,target){
+              var areaid = a.val();
+              // console.log(areaid);
+              $.get("{:U('Home/Address/AreasSel')}",{'area_id':areaid},function(data){
+                            var obj = data;
+                            var val = document.getElementById(target);
+                            val.length = 1;
+                            for (key in obj) {
+                                  var opt = document.createElement('option');
+                                  opt.value = obj[key]['area_id'];
+                                  opt.innerHTML = obj[key]['area_name'];
+                                  val.appendChild(opt);
+                            }
+
+              });
+        }
+
+        //数据的验证
+        $('#sh').blur(function(){
+                if($(this).val() == ''){
+                      $('#shspan').html("<font color='red' size='1'>收货人不能为空!</font>");
+                }else if(!$(this).val().match(/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/)){
+                      $('#shspan').html("<font color='red' size='1'>您输入的含有非法字符!</font>");
+                      $('#sh').val('');
+                }
+        });
+        $('#sh').focusin(function(){
+                $('#shspan').html('');
+        });
+        //验证手机
+        $('#tel').blur(function(){
+                if($(this).val() == ''){
+                      $('#telspan').html("<font color='red' size='1'>手机号码不能为空!</font>");
+                }else if(!$(this).val().match(/^1[3-8][0-9]\d{8}$/)){
+                      $('#telspan').html("<font color='red' size='1'>手机号码有误!</font>");
+                      $('#tel').val('');
+                }
+        });
+        $('#tel').focusin(function(){
+                $('#telspan').html('');
+        });
+        //详细地址验证
+        $('#xqaddress').blur(function(){
+                if($(this).val() == ''){
+                      $('#xqspan').html("<font color='red' size='1'>详情地址不能为空!</font>");
+                }
+                // else if(!$(this).val().match(/^[\u4e00-\u9fa5_\-\/a-zA-Z0-9]+$/)){
+                //       $('#xqspan').html("<font color='red' size='1'>您输入的含有非法字符!</font>");
+                //       $('#xqaddress').val('');
+                // }
+        });
+        $('#xqaddress').focusin(function(){
+                $('#xqspan').html('');
+        });
+       
+        //上传地址
+        $('#submit1').click(function(){
+                  if ($('#sh').val() == "" || $('#tel').val() == "" || $('#xqaddress').val() == "") {
+                        sweetAlert("修改失败", "请填完整信息后再提交!", "error");
+                        return false;
+                  }else if($('#province').val() == '0') {
+                      sweetAlert("修改失败", "请选择所在地区后提交!", "error");
+                      return false;
+                  } else{
+                          //判断是否设置默认 
+                          // var val = $('input:radio:checked').val();
+                          // consol.log(val);
+                          // if(val == null) {
+                          //      $('#dft').val(2);
+                          //   var ads_status = $('#dft').val();
+                          // }else {
+                          //     $('#dft').val(1);
+                          //   var ads_status = $('#dft').val();
+                          // }else {
+                          // }
+                          var sh = $('#sh').val();
+                          var tel = $('#tel').val();
+                          var xqaddress = $('#xqaddress').val();
+                         // 
+                         var ads_id = $(this).attr('adss');
+                         console.log(ads_id);
+                          var province = $("#province").find("option:selected").text();
+                          var city = $("#city").find("option:selected").text();
+                          var district = $("#district").find("option:selected").text();
+                          var Thaddress = province + city + district + xqaddress;
+                          // console.log(Thaddress);
+                          $.post("{:U('Home/Address/addressSave')}",{'ads_id':ads_id,'clt_name':sh,'clt_phone':tel,'clt_address':Thaddress},function(data){
+                                 if (data > 0){
+                                     swal("修改成功!", "", "success");
+                                     setTimeout(function(){
+                                            window.location.href="{:U('Home/Address/index')}";
+                                     },2000);
+                                 }else {
+                                         sweetAlert("修改失败", "", "error");
+                                              setTimeout(function(){
+                                                window.location.href="{:U('Home/Address/index')}";
+                                         },2000);
+                                 }
+                          });
+
+                  }
+        });
+    
+      //删除地址
+      function adsDel(id,btn)
+      {
+            var tr = $(btn).parents('tr');
+            // console.log(tr);
+            $.get("{:U('Home/Address/Deladds')}",{'ads_id':id},function(data){
+                    if (data == '1') {
+                         swal("删除成功!", "", "success")
+                                tr.remove();
+                                setTimeout(function(){
+                                                window.location.href="{:U('Home/Address/index')}";
+                                         },1000);
+                    };
+            });
+      }
+
+      //地址编辑特效start
+      
+      </script>
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   

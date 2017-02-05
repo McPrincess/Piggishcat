@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/css/bootstrap.min.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <!-- <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" /> -->
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/pic/jquery-2.1.3.min.js"/>
+    <load href="__PUBLIC__/Home/pic/bootstrap.min.css"/>
+    <load href="__PUBLIC__/Home/pic/cropper.min.css"/>
+    <load href="__PUBLIC__/Home/pic/sitelogo.css"/>
+    <load href="__PUBLIC__/Home/pic/cropper.min.js"/>
+    <load href="__PUBLIC__/Home/pic/sitelogo.js"/>
+    <load href="__PUBLIC__/Home/pic/bootstrap.min.js"/>
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+<style>
+           body{font-size: 12px;}
+            /* #login{width:500px;height:350px;background:white;border:2px solid lightgray;text-align:center;border-radius:20px;display:none;position:fixed;left:50%;top:50%;margin-left:-150px;margin-top:-150px;z-index:1002}*/
+           
+</style>
+</head>
+<body>  
+  
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+    <!--End Header End-->  
+<div class="i_bg bg_color">
+    <!--Begin 用户中心 Begin -->
+	<div class="m_content">
+    <!-- 左边菜单 start --> 
+   	<div class="m_left">
+            <div class="left_n">个人中心</div>
+                <div class="left_m">
+                <div class="left_m_t t_bg2">会员中心</div>
+                <ul>
+                    <li><a href="{:U('Home/Clientuser/index')}">我的资料</a></li>
+                    <li><a href="{:U('Home/Enshrine/index')}">我的收藏</a></li>
+                      <li><a href="{:U('Home/Link/index')}">浏览记录</a></li>
+                    <li><a href="{:U('Home/Message/index')}">我的留言</a></li>
+                    <li><a href="{:U('Home/Clientuser/safe')}">账户安全</a></li>
+                    <li><a href="{:U('Home/Clientuser/usermessage')}">完善资料</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                     <li><a href="{:U('Home/Orderform/index')}">我的订单</a></li>
+                        <li><a href="#">我的评论</a></li>
+                    <li><a href="{:U('Home/Address/index')}">收货地址</a></li>
+                    <li><a href="#">缺货登记</a></li>
+                    <li><a href="#">跟踪订单</a></li>
+                </ul>
+            </div> 
+        </div>
+    <!-- 左边菜单 end -->
+    <!-- 右边菜单 start -->
+	<div class="m_right">
+        	<div class="m_des">
+            <table border="0" style="width:870px; line-height:22px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td width="115">
+                    <!-- 头像start -->
+                    <div id="crop-avatar" class="col-md-6">
+                    <div class="avatar-view" title="Change Logo Picture">
+                        <img id="picc" attpic="__PUBLIC__/image/Clientpic/" src="__PUBLIC__/image/Clientpic/{$userInfo.clt_pic}" alt="Logo" height="120">
+                    </div>
+                   </div>
+                    <!-- 头像end -->
+                    </td>
+                    <td>
+                    	<div class="m_user">{$userInfo.clt_user}</div>
+                        <p>
+                            等级：注册用户 <br />
+                            
+                    </td>
+                  </tr>
+                </table>	
+            </div>
+            <div class="mem_t">账号信息</div>
+            <table border="0" class="mon_tab" style="width:870px; margin-bottom:20px;" cellspacing="0" cellpadding="0">
+              <tr>
+                
+                <td width="60%">账户余额：<span style="color:#555555;">{$userInfo.clt_moeny}</span></td>
+              </tr>
+              <tr>
+                <td>电&nbsp; &nbsp; 话：<span style="color:#555555;">{$Think.session.homeuser.clt_phone}</span></td>
+                <td>消费金额：<span style="color:#555555;">{$userInfo.clt_spending}</span></td>
+              </tr>
+              <tr>
+                <td>身份证号：<span style="color:#555555;">{$userInfo.clt_identity}</span></td>
+                <td>注册时间：<span style="color:#555555;">{$userInfo.clt_addtime}</span></td>
+              </tr>
+            </table>    
+        </div>
+    <!-- 坐标菜单 end -->
+
+    </div>
+
+    
+	<!--End 用户中心 End--> 
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->  
+    <!-- 上传头像表单  -->
+    
+    <!--  -->
+    <!-- <div id="login" >
+             <form id="iconForm" enctype="multipart/form-data" method="post" >
+        <div>
+        <div  id="sztx" >设置头像</div>
+
+            <div>                           
+                <div >                             
+                    <div style="border:1px solid red;width:350px;height:270px;padding:25px" >    
+                            <form action="{:U('Home/Clientuser/Upphoto')}" method="post"  enctype="multipart/form-data" >
+                                <input type='file' name='myfile' class="btn btn-default"/>
+                                <br/>
+                                <input type="submit" class="btn btn-info" style='width:297px;'/>
+                                <input type="hidden" value="{$Think.session.homeuser.clt_id}">
+                            </form>
+                    </div>
+                <a id="del" class="btn btn-danger">取消</a>                       
+                <div id="info"></div>
+        </div>
+    </form>
+        </div> -->
+    <!--  -->
+    <!-- 头像start -->
+           <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form class="avatar-form" iconForm enctype="multipart/form-data" method="post" action="{:U('Home/Clientuser/Upphoto')}">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title" id="avatar-modal-label">Change Logo Picture</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="avatar-body">
+                        <div class="avatar-upload">
+                            <input class="avatar-src" name="avatar_src" type="hidden">
+                            <input class="avatar-data" name="avatar_data" type="hidden">
+                            <label for="avatarInput">图片上传</label>
+                            <input class="avatar-input" id="avatarInput" name="avatar_file" type="file"></div>
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="avatar-wrapper"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="avatar-preview preview-lg"></div>
+                                <div class="avatar-preview preview-md"></div>
+                                <div class="avatar-preview preview-sm"></div>
+                            </div>
+                        </div>
+                        <div class="row avatar-btns">
+                            <div class="col-md-9">
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+    <!-- 头像end -->
+   <script type="text/javascript">
+            // //修改头像
+            // function upload()
+            // {
+            //     var iconForm = document.getElementById('iconForm');
+            //     var iconForm = new FormData(iconForm);
+            //     $.ajax({
+            //         url : "{:U('Home/Clientuser/Upphoto')}",
+            //         type : 'post',
+            //         data : iconForm,
+            //         contentType : false,
+            //         processData : false,
+            //         success : function(res){
+
+            //         }
+            //     });
+            // }
+   </script>
+    <script>
+        // var div;
+        // photo.onclick = function(){
+        //     gai();
+        //     document.body.style.height = '0';
+        //     login.style.display = 'block';
+            
+        // }
+
+        // del.onclick = function(){
+            
+        //     document.body.style.height = '';
+        //     login.style.display = 'none';
+        //     div.parentNode.removeChild(div);
+        
+        // }
+        
+        // function gai(){
+        //     div = document.createElement('div');
+        //     div.style.width = '100%';
+        //     div.style.height = '100%';
+        //     div.style.background ='rgba(100,100,100,0.7)';
+        //     div.style.position = 'fixed';
+        //     div.style.top = 0;
+        //     div.style.left = 0;
+
+        //     document.body.appendChild(div);
+        // }
+    </script>

@@ -1,0 +1,372 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>馋猫-管理员后台首页</title>
+  <meta name="description" content="这是一个 index 页面">
+  <meta name="keywords" content="index">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+  以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+  <div class="am-topbar-brand">
+    <strong>馋猫</strong> <small>管理员后台</small>
+  </div>
+
+  <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+  <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+    <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">0</span></a></li>
+      <li class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="admin-user.html"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </li>
+      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="am-cf admin-main">
+  <!-- sidebar start -->
+  <div class="admin-sidebar">
+    <ul class="am-list admin-sidebar-list">
+
+      <!-- 商户用户表 -->
+      <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+
+      <!-- 管理员用户表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav9'}"><span class="am-icon-file"></span> 管理员管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav9">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 管理员列表浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 管理员添加</a></li>
+        </ul>
+      </li>
+
+      <!-- 公告表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav10'}"><span class="am-icon-file"></span> 公告管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav10">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 公告浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 公告添加</a></li>
+        </ul>
+      </li>
+
+      <!-- 客户用户表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 客户用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav">
+          <li><a href="" class="am-cf"><span class="am-icon-check"></span> 用户列表浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 用户添加</a></li>
+        </ul>
+      </li>
+
+      <!-- 商户用户表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> 商户用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav1">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 商户用户浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 增加商户账号</a></li>
+        </ul>
+      </li>
+
+      <!-- 店铺表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span> 店铺管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav2">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 店铺浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 待审核商铺</a></li>
+        </ul>
+      </li>
+
+      <!-- 商品分类表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span> 商品分类管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav3">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 商品分类浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 添加顶级分类</a></li>
+        </ul>
+      </li>
+
+      <!-- 商品信息表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav4'}"><span class="am-icon-file"></span> 商品信息管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav4">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 商品浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 待审核商品</a></li>
+        </ul>
+      </li>
+
+      <!-- 订单表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav5">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 订单查询<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+        </ul>
+      </li>
+
+      <!-- 商品退换表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav6'}"><span class="am-icon-file"></span> 退换货订单管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav6">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 退换货订单查询<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+        </ul>
+      </li>
+
+      <!-- 友情链接表 -->
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav7'}"><span class="am-icon-file"></span> 友情链接管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav7">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 链接信息浏览<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+        </ul>
+      </li>
+
+      <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav8'}"><span class="am-icon-file"></span> 网站 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-nav8">
+          <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
+        </ul>
+      </li>
+
+      <!-- 范本,勿删 -->
+      <!--<li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> 客户用户 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
+          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
+          <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+          <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
+          <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+        </ul>
+      </li>-->
+      <!-- 范本,勿删 -->
+
+    </ul>
+
+    <div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-bookmark"></span> 公告</p>
+        <p>时光静好，与君语；细水流年，与君同。—— 馋猫</p>
+      </div>
+    </div>
+
+    <div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-tag"></span> 馋猫</p>
+        <p>欢迎来到馋猫!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- sidebar end -->
+
+  <!-- content start -->
+  <div class="admin-content">
+
+    <div class="am-cf am-padding">
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">馋猫</strong></div>
+    </div>
+
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+      <li><a href="javascript:" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>七天新增用户<br/>2300</a></li>
+      <li><a href="javascript:" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>成交订单<br/>308</a></li>
+      <li><a href="javascript:" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>昨日访问<br/>80082</a></li>
+      <li><a href="javascript:" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>总用户<br/>3000</a></li>
+    </ul>
+
+    <div class="am-g">
+      <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">管理员留言<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
+            <ul class="am-comments-list admin-content-comment">
+              <!--action-->
+              <li class="am-comment">
+                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                <div class="am-comment-main">
+                  <header class="am-comment-hd">
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">这里的留言是管理员交流的平台</a> 留言于 <time>2016-11-29 20:29</time></div>
+                  </header>
+                  <div class="am-comment-bd"><p>这里的留言是管理员交流的平台</p>
+                  </div>
+                </div>
+              </li>
+              <!--end-->
+
+              <!--delete-->
+                <li class="am-comment">
+                  <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta"><a href="#" class="am-comment-author">这里的留言是管理员交流的平台</a> 留言于 <time>2016-11-29 20:29</time></div>
+                    </header>
+                    <div class="am-comment-bd"><p>这里的留言是管理员交流的平台</p>
+                    </div>
+                  </div>
+                </li><li class="am-comment">
+                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                <div class="am-comment-main">
+                  <header class="am-comment-hd">
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">这里的留言是管理员交流的平台</a> 留言于 <time>2016-11-29 20:29</time></div>
+                  </header>
+                  <div class="am-comment-bd"><p>这里的留言是管理员交流的平台</p>
+                  </div>
+                </div>
+                </li><li class="am-comment">
+                  <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
+                  <div class="am-comment-main">
+                    <header class="am-comment-hd">
+                      <div class="am-comment-meta"><a href="#" class="am-comment-author">这里的留言是管理员交流的平台</a> 留言于 <time>2016-11-29 20:29</time></div>
+                    </header>
+                    <div class="am-comment-bd"><p>这里的留言是管理员交流的平台</p>
+                    </div>
+                  </div>
+                </li>
+              <!--delete-->
+            </ul>
+            <ul class="am-pagination am-fr admin-content-pagination">
+              <li class="am-disabled"><a href="#">&laquo;</a></li>
+              <li class="am-active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">&raquo;</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="am-u-md-6">
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
+            <ul class="am-list admin-content-task">
+              <li>
+                <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
+                <div class="admin-task-bd">
+                  The starting place for exploring business management; helping new managers get started and experienced managers get better.
+                </div>
+                <div class="am-cf">
+                  <div class="am-btn-toolbar am-fl">
+                    <div class="am-btn-group am-btn-group-xs">
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                    </div>
+                  </div>
+                  <div class="am-fr">
+                    <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="admin-task-meta"> Posted on 25/1/2120 by 呵呵呵</div>
+                <div class="admin-task-bd">
+                  基兰和狗熊出现在不同阵营时。基兰会获得BUFF，“装甲熊憎恨者”。狗熊会获得BUFF，“时光老人憎恨者”。
+                </div>
+                <div class="am-cf">
+                  <div class="am-btn-toolbar am-fl">
+                    <div class="am-btn-group am-btn-group-xs">
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-check"></span></button>
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-pencil"></span></button>
+                      <button type="button" class="am-btn am-btn-default"><span class="am-icon-times"></span></button>
+                    </div>
+                  </div>
+                  <div class="am-fr">
+                    <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="am-panel am-panel-default">
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">浏览器统计<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div id="collapse-panel-2" class="am-in">
+            <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
+              <tbody>
+              <tr>
+                <th class="am-text-center">#</th>
+                <th>浏览器</th>
+                <th>访问量</th>
+              </tr>
+              <tr>
+                <td class="am-text-center"><img src="assets/i/examples/admin-chrome.png" alt=""></td>
+                <td>Google Chrome</td>
+                <td>3,005</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><img src="assets/i/examples/admin-firefox.png" alt=""></td>
+                <td>Mozilla Firefox</td>
+                <td>2,505</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><img src="assets/i/examples/admin-ie.png" alt=""></td>
+                <td>Internet Explorer</td>
+                <td>1,405</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><img src="assets/i/examples/admin-opera.png" alt=""></td>
+                <td>Opera</td>
+                <td>4,005</td>
+              </tr>
+              <tr>
+                <td class="am-text-center"><img src="assets/i/examples/admin-safari.png" alt=""></td>
+                <td>Safari</td>
+                <td>505</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- content end -->
+
+</div>
+
+<footer>
+  <hr>
+  <p class="am-padding-left">© 馋猫项目组 版权所有.</p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/app.js"></script>
+</body>
+</html>

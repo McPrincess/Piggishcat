@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<load href="__PUBLIC__/js/jquery-2.1.3.min.js" />
+	<!--<load href="__PUBLIC__/js/jquery-1.8.3.min.js" />-->
+	<load href="__PUBLIC__/js/bootstrap.min.js" />
+	<load href="__PUBLIC__/css/bootstrap.min.css" />
+	<style>
+		body,div{
+			margin:0px;
+			padding:0px;
+			/*background:lightblue;*/
+		}
+		td{
+			width:170px;
+			text-align:center;
+		}
+
+		th{
+			text-align:center;
+		}
+	
+		table{
+			border:5px groove #ccc;
+			/*background:lightblue;*/
+			color:gray;
+			width:900px;
+		}
+
+		#goodsInfo{
+			width:800px;
+			/*margin:auto;*/
+			margin-left:50px;
+			text-align:center;
+		}
+		tr{
+			line-height:40px;
+		}
+		.gou{
+			width:50px;
+		}
+	</style>
+
+</head>
+<body>
+	<div id='goodsInfo'>
+	<table border='1' cellspacing='0' style="margin-left:100px; margin-top:50px;" >
+		<foreach name='list' key='key' item='val'>
+		
+		<th colspan='4' style='font-size:20px;text-align:center;'>订单号:{$val.orm_id}</th>
+		<tr>
+			<form class="form-horizontal" action="{:U('Admin/Goodspicture/Upload')}" method='post' enctype="multipart/form-data">
+			
+			<th>会员ID</th>
+			<td style="padding-left:30px" id='clt_id'>{$val.clt_id}</td>
+			<td class="gou"></td>
+			<td></td>
+		</tr>	
+		<tr>
+			<th>商品名</th>
+			<td style="padding-left:30px">{$val.gos_name}</td>
+			<td class="gou"></td>
+			<td></td>
+			</form>
+		</tr>
+
+		<tr>
+			<th>数量</th>
+			<td style="padding-left:30px">
+				{$val.sht_num}
+			</td>
+			<td class="gou"></td>
+			<td></td>
+
+		</tr>
+		
+		<tr>
+			<th>总金额(￥)</th>
+			<td style="padding-left:30px">{$val.orm_total}</td>
+			<td class="gou"></td>
+			<td></td>
+
+		</tr>
+		<tr>
+			<th>订单创建时间</th>
+			<td style="padding-left:30px width:1000px;">
+				{$val.orm_addtime}
+			</td>
+			<td class="gou"><span id='PriceSpan'></span></td>
+			<td>
+				
+			</td>
+		</tr>
+		<tr>
+			<th>地址</th>
+			<td style="padding-left:30px">
+				{$val.ads_id}
+			</td>
+			<td><span id='DescSpan'></span></td>
+
+			<td>
+				<input type="hidden" id='orm_id' value="{$list[0].orm_id}"/>
+			</td>
+		</tr>
+		<tr>
+			<th>状态</th>
+			<td style="padding-left:30px" id="orm_status">{$val.orm_status}</td>
+			<td class="gou"><span id='Status'></span></td>
+			<td>
+				<button type="button" class="btn btn-primary btn-sm" style='width:60px' id="fahuo">发货</button>
+			</td>
+		</tr>
+		
+		</foreach>
+	</table>
+	</div>
+</body>
+<script>
+	var clt_id = $('#clt_id').html();
+	var orm_id = $('#orm_id').val();
+	
+	$('#modi_address').click(function(){
+		$('#address').removeAttr('disabled');
+		$('#Determine_Address').click(function(){
+			
+			var address = $('#address').val();
+			$.get("{:U('admin/OrderForm/saveRess')}",{'clt_id':clt_id,'orm_id':orm_id,'orm_ress':address},function(data){
+
+					if(data == '1'){
+						alert('修改成功！！！');
+					}
+			});
+		});
+	});
+
+	$('#address').blur(function(){
+		$(this).attr('disabled','disabled');
+		$('#Determine_Address').removeAttr('disabled');
+	});
+
+
+	//找ID，给click事件
+	$('#fahuo').click(function(){
+		//点击事件是执行ajax，携带状态参数
+		$.get("{:U('Admin/OrderForm/Change')}",{"orm_status":1,"orm_id":orm_id},function(data){
+			//判断返回值
+			if(data == '1'){
+				//如果成功
+				$('#fahuo').html('已发货');
+				$('#orm_status').html('已发货');
+			}else{
+				//失败
+				alert('操作失败');
+			}
+		})
+	});
+	
+</script>
+</html>

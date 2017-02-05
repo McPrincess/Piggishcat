@@ -1,0 +1,73 @@
+<!-- 引入头部 -->
+<include file="Public:Table_header/header"/>
+        <div class="am-g">
+
+            <h2>回复查看</h2>
+            <div class="am-u-sm-12">
+                <form class="am-form">
+                    <table class="am-table am-table-striped am-table-hover ">
+                        <thead>
+                            <tr>
+                                <th>用户帐号</th>
+                                <th>留言内容</th>
+                                <th>留言时间</th>
+                                <th>操作</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name='meeList' key='key' item='val'>
+                                <tr>
+                                    <td>{$val.clt_user}</td>
+                                    <td style="width:300px">{$val.mee_detail}</td>
+                                    <td>{$val.mee_addtime}</td>
+                                    <td>
+                                        <div class="input-group">
+                                            
+                                            <span class="input-group-btn">
+                                                <a href="{:U('Admin/Message/index')}" class="btn btn-info" type="submit">返回回复</a>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+
+                    <hr />
+
+                    <table class="am-table am-table-striped am-table-hover ">
+                        <thead>
+                            <tr>
+                                <th>管理员</th>
+                                <th>回复内容</th>
+                                <th>回复时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name='reyList' key='key' item='val'>
+                                <tr>
+                                    <td>{$val.adn_user}</td>
+                                    <td style="width:300px">{$val.rey_detail}</td>
+                                    <td>{$val.rey_addtime}</td>
+
+                                </tr>
+                            </foreach>
+                        </tbody>
+                    </table>
+                    <!-- <div class="am-cf">
+                        共 {$num}条记录
+                        <div id="show">
+                            {$show}
+                        </div>
+                    </div> -->
+                    <hr />
+                    <p>注：.....</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- content end -->
+    </div>
+<include file="Public:Table_header/footer"/>

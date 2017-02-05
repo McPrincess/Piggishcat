@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <load href="__PUBLIC__/Home/css/style.css" />
+    <load href="__PUBLIC__/Home/js/jquery-1.8.2.min.js" />
+    <load href="__PUBLIC__/Home/js/jquery-2.1.3.min.js" />
+    <load href="__PUBLIC__/Home/js/menu.js" />
+    <load href="__PUBLIC__/Home/js/select.js" />
+    <load href="__PUBLIC__/Home/alert/js/sweet-alert.js" />
+    <load href="__PUBLIC__/Home/alert/css/sweet-alert.css" />
+    <link rel="icon" type="image/png" href="__PUBLIC__/home/images/haixiu.png"> 
+
+        
+  
+<title>馋猫</title>
+</head>
+<body>  
+  
+    <!--Begin Header Begin-->
+    <include file="./Public/Home/PC_top.html"/>
+    <!--End Header End--> 
+<div class="i_bg bg_color">
+    <!--Begin 用户中心 Begin -->
+	<div class="m_content">
+   	<!-- 左边菜单 start -->
+    <div class="m_left">
+            <div class="left_n">个人中心</div>
+                <div class="left_m">
+                <div class="left_m_t t_bg2">会员中心</div>
+                <ul>
+                    <li><a href="{:U('Home/Clientuser/index')}">我的资料</a></li>
+                    <li><a href="{:U('Home/Enshrine/index')}">我的收藏</a></li>
+                    <li><a href="{:U('Home/Link/index')}">浏览记录</a></li>
+                    <li><a href="{:U('Home/Message/index')}">我的留言</a></li>
+                    <li><a href="{:U('Home/Clientuser/safe')}">账户安全</a></li>
+                    <li><a href="{:U('Home/Clientuser/usermessage')}">完善资料</a></li>
+                </ul>
+            </div>
+            <div class="left_m">
+                <div class="left_m_t t_bg1">订单中心</div>
+                <ul>
+                     <li><a href="{:U('Home/Orderform/index')}">我的订单</a></li>
+                        <li><a href="#">我的评论</a></li>
+                    <li><a href="{:U('Home/Address/index')}">收货地址</a></li>
+                    <li><a href="#">缺货登记</a></li>
+                    <li><a href="#">跟踪订单</a></li>
+                </ul>
+            </div> 
+        </div>
+    <!-- 左边菜单 end -->
+		<div class="m_right">
+            <p></p>
+            <div class="mem_tit">
+            	<span class="fr" style="font-size:12px; color:#55555; font-family:'宋体'; margin-top:5px;">共发现{$count}件</span><h2>我的浏览历史       <span style='font-size:12px;color:#8B8989'>亲 : 我们只能为您保留24小时的浏览记录 ! ! ! 若喜欢 , 请假如收藏夹以便长久保存 ! ! !</span></h2>
+              
+            </div>
+           	<table border="0" class="order_tab" style="width:930px;" cellspacing="0" cellpadding="0">
+              <tr>                                                                                                                                       
+                <td align="center">商品图</td>
+                <td align="center">
+                    <a href="" title='点击查看次商品'>商品名称</a>
+                </td>
+                <td align="center">商品描述</td>
+                <td align="center">单价</td>
+                <!-- <td align="center">操作</td> -->
+              </tr>
+              
+              <foreach name="goodsInfo" key="key" item="val">
+              <tr>
+                <td style="font-family:'宋体';">
+                	<div class="sm_img"><img src="__PUBLIC__/image/goods/small_{$val[goe_path]}" width="48" height="48" /></div>
+                </td>
+                <td> <a href="{:U('Home/Goodsdetails/index',array('gos_id'=>$val[gos_id]))}" title='点击查看此商品' style='color:blue'>{$val.gos_name}</a></td>
+                <td align="center">{$val.gos_description}</td>
+                <td align="center">￥ {$val.gos_price}</td>
+                <!-- <td align="center">
+                        <a href="#" style="color:#ff4e00;">加入购物车</a>&nbsp; &nbsp;
+                         <a onclick="del({$val['ene_id']},this)">收藏</a>
+                 </td> -->
+              </tr>
+              </foreach>
+              
+            </table>
+
+
+            
+        </div>
+    </div>
+	<!--End 用户中心 End --> 
+    <script type="text/javascript">
+           function del(id,btn)
+           {
+                var tr = $(btn).parents('tr');
+                // console.log(tr);
+                $.get("{:U('Home/Enshrine/delEnshrine')}",{'ene_id':id},function(data){
+                            if (data == '1') {
+                                  swal("移出成功!", "", "success")
+                                tr.remove();
+                            }
+                });
+           }
+    </script>
+    <!--Begin Footer Begin -->
+    <include file="./Public/Home/PC_foot.html"/>
+    <!--End Footer End -->   
+
